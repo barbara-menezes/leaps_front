@@ -10,9 +10,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+// import { HttpModule } from '@angular/http'
 
+import { MaterialModule } from './main/shared/material/material.module'
 import { SharedModule } from './main/shared/shared.module';
 import { LoginComponent } from './security/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {
@@ -20,7 +23,7 @@ const appRoutes: Routes = [
     loadChildren: './main/core/core.module#CoreModule'
   }
 ];
-
+/* para aplicar meta-dados em uma classe, atrib, método */
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +37,9 @@ const appRoutes: Routes = [
     SharedModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
