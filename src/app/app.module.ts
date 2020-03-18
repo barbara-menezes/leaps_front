@@ -5,8 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AuthenticationComponent } from './main/authentication/authentication.component';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ROUTES } from './app.routes'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 import { SharedModule } from './main/shared/shared.module';
+import { LoginComponent } from './security/login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -20,11 +26,14 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     AuthenticationComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
