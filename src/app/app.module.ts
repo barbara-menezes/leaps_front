@@ -10,12 +10,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-// import { HttpModule } from '@angular/http'
-
-import { MaterialModule } from './main/shared/material/material.module'
 import { SharedModule } from './main/shared/shared.module';
-import { LoginComponent } from './security/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './main/authentication/login/login.component';
+import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component';
 
 const appRoutes: Routes = [
   {
@@ -30,6 +28,7 @@ const appRoutes: Routes = [
     MainComponent,
     AuthenticationComponent,
     LoginComponent,
+    SubjectFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,6 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
