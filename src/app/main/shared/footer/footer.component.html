@@ -9,6 +9,7 @@
     </div>
 </body>
 </html> -->
+
 <footer class="footer">
     <div class="row justify-content-md-center sharing-area text-center">
         <div class="text-center col-md-12 col-lg-8">
@@ -26,4 +27,8 @@
             </a>
         </div>
     </div>
+    <!--Scroll to top-->
+    <button [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top btn btn-outline-info" style="display: block; position: fixed; bottom: 50px; right: 20px;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </footer>
