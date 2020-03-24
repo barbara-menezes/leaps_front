@@ -14,6 +14,7 @@ import { SharedModule } from './main/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './main/authentication/login/login.component';
 import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 const appRoutes: Routes = [
   {
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
