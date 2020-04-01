@@ -1,6 +1,6 @@
 <body>
     <div class="s012">
-        <form>
+        <form [formGroup]="cadastro" (ngSubmit)="save()" (ngReset)="resetForm()">
             <h2>Cadastro de Disciplinas</h2>
             <div class="inner-form">
                 <div class="main-form" id="main-form">
@@ -17,7 +17,7 @@
                             </div>
                             <div class="input-field">
                                 <label>CÓDIGO DA DISCIPLINA</label>
-                                <input type="text" placeholder="Ex: 84951.0.0" />
+                                <input type="text" placeholder="Ex: 84951.0.0" name="cod_disciplina" formControlName="cod_disciplina" />
                             </div>
                         </div>
                         <div class="input-wrap wrapper-divider">
@@ -43,7 +43,7 @@
                             </div>
                             <div class="input-field">
                                 <label>NOME DA DISCIPLINA</label>
-                                <input type="text" placeholder="Ex: TÉCNICAS DE EXAME E AVALIAÇÃO PSICOLÓGICA" />
+                                <input type="text" placeholder="Ex: TÉCNICAS DE EXAME E AVALIAÇÃO PSICOLÓGICA" name="nome_disciplina" formControlName="nome_disciplina" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <div class="input-field">
                                 <label>PERÍODO</label>
                                 <input class="datepicker" type="number" placeholder="Ex: 4" min="4" max="10"
-                                    minlength="1" maxlength="2" />
+                                    minlength="1" maxlength="2" name="periodo" formControlName="periodo" />
                             </div>
                         </div>
                         <div class="input-wrap  wrapper-divider">
@@ -73,13 +73,13 @@
                             </div>
                             <div class="input-field">
                                 <label>TURNO DA DISCIPLINA</label>
-                                <input class="datepicker" type="text" placeholder="Ex: MANHÃ" />
+                                <input class="datepicker" type="text" placeholder="Ex: MANHÃ" name="turno" formControlName="turno" />
                             </div>
                         </div>
                     </div>
                     <div class="row second">
-                        <button class="btn-search " type="button">CANCELAR</button>
-                        <button class="btn-search" type="button">SALVAR</button>
+                        <button class="btn-search" type="reset">CANCELAR</button>
+                        <button class="btn-search" type="submit">SALVAR</button>
                     </div>
                 </div>
             </div>
