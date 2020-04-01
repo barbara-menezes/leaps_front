@@ -5,7 +5,6 @@ import { SubjectComponent } from './subject.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
 
 
-
 @NgModule({
   declarations: [SubjectComponent, SubjectFormComponent],
   imports: [

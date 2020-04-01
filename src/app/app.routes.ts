@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router'
-import { LoginComponent } from './main/authentication/login/login.component'
-import { SubjectComponent } from './main/core/subject/subject.component'
 import { MainComponent } from './main/main.component'
+import { LoginComponent } from './main/authentication/login/login.component'
 import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component'
-
+import { SubjectComponent } from './main/core/subject/subject.component';
 
 export const ROUTES: Routes = [
     {
@@ -17,5 +16,9 @@ export const ROUTES: Routes = [
     {
         path: 'subject/subject-form',
         component: SubjectFormComponent
+    },
+    {
+        path: 'subject',
+        component: SubjectComponent
     }
 ]
