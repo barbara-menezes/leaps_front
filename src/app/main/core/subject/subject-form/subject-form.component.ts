@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { SubjectService } from 'src/app/main/services/subject.service';
+import { NgxNotificationMsgService, NgxNotificationStatusMsg } from 'ngx-notification-msg';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-subject-form',
@@ -8,28 +13,37 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class SubjectFormComponent implements OnInit {
 
-  cadastro : FormGroup;
+  constructor(private service: SubjectService,
+    private ngxService: NgxUiLoaderService,
+    private readonly ngxNotificationMsgService: NgxNotificationMsgService,
+    private router: Router) { }
 
-  constructor(private fb : FormBuilder) { }
+  form = new FormGroup({
+    nome_disciplina: new FormControl('', Validators.required),
+    codigo: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    periodo: new FormControl('', Validators.required),
+    turno: new FormControl('', [Validators.required])
+  })
 
   ngOnInit() {
-    this.cadastro = this.fb.group({
-      cod_disciplina: ['', [Validators.required, Validators.minLength(6)]],
-      nome_disciplina: ['', [Validators.required]],
-      periodo: [0, [Validators.required, Validators.min(4), Validators.max(10)]],
-      turno: ['', [Validators.required]]
-    });
   }
 
-  save(): void {
-    if (this.cadastro.invalid) {
-      return;
+  cadastrar(): void {
+    if (this.form.valid) {
+
+      // this.ngxService.start();
+      this.service.createSubject(this.form.value).subscribe(res => {
+        if (res) {
+          // this.ngxService.stop();
+
+          this.ngxNotificationMsgService.open({
+            status: NgxNotificationStatusMsg.SUCCESS,
+            header: 'Parabéns!',
+            msg: 'O cadastro da disciplina foi realizado com sucesso!'
+          });
+          this.router.navigateByUrl('/subject')
+        }
+      })
     }
-    alert('success' + JSON.stringify(this.cadastro.value, null, 4))
   }
-
-  resetForm(): void {
-    this.cadastro.reset();
-  }
-
 }

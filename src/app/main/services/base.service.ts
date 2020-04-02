@@ -26,7 +26,7 @@ export abstract class BaseService {
 
 @Injectable()
 export class Configuration {
-  public server = environment.serverUrl;
+  public server = "http://localhost:8080/";
   public apiUrl = "";
   public serverWithApiUrl = this.server + this.apiUrl;
 }

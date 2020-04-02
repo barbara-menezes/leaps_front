@@ -15,6 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './main/authentication/login/login.component';
 import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
     SubjectFormComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
@@ -39,6 +43,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    NgxUiLoaderModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]

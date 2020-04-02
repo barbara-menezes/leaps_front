@@ -1,75 +1,45 @@
-<body>
-    
+<div>
     <form>
-        <button (click)="goToDisciplina()">Cadastrar Disciplina</button>
+        <button>Cadastrar Disciplina</button>
     </form>
-    <table>
-    <tr>
-        <th>Cod Disc</th>
-        <th>Disciplina</th>
-        <th>Período</th>
-        <th>Turno</th>
-        <th>Ações</th>
-    </tr>
-    <tr>
-        <td>01</td>
-        <td>pisc</td>
-        <td>4º</td>
-        <td>manhã</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    <tr>
-        <td>02</td>
-        <td>Laboratório</td>
-        <td>4º</td>
-        <td>noite</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    <tr>
-        <td>03</td>
-        <td>Estágio</td>
-        <td>4º</td>
-        <td>tarde</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    <tr>
-        <td>04</td>
-        <td>Psc infantil</td>
-        <td>4º</td>
-        <td>noite</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    <tr>
-        <td>05</td>
-        <td>Psc adulta</td>
-        <td>4º</td>
-        <td>tarde</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    <tr>
-        <td>06</td>
-        <td>Psc relacional</td>
-        <td>4º</td>
-        <td>noite</td>
-        <td>
-            <a href=""title="Editar Disciplina"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
-            <a href=""title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </td>
-    </tr>
-    </table>
-</body>
+    <!-- <table>
+        <tr>
+            <th>Cod Disc</th>
+            <th>Disciplina</th>
+            <th>Período</th>
+            <th>Turno</th>
+            <th>Ações</th>
+        </tr>
+        <tr >
+            <td>{{item.codigo}}</td>
+            <td>{{item.nome_disciplina}}</td>
+            <td>{{item.periodo}}</td>
+            <td>{{item.turno}}</td>
+            <td>
+                <a href="" title="Editar Disciplina"><i class="material-icons" aria-hidden="true"
+                        role="img">mode_edit</i></a>
+                <a href="" title="Excluir Disciplina"><i class="material-icons" aria-hidden="true"
+                        role="img">clear</i></a>
+            </td>
+        </tr>
+    </table> -->
+    <div fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let item of disciplinas">
+        <div>
+            {{item.codigo}}
+        </div>
+        <div>
+            {{item.nome_disciplina}}
+        </div>
+        <div>
+            {{item.periodo}}
+        </div>
+        <div>
+            {{item.turno}}
+        </div>
+        <div>
+            <a href="" title="Editar Disciplina"><i class="material-icons" aria-hidden="true"
+                    role="img">mode_edit</i></a>
+            <a href="" title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
+        </div>
+    </div>
+</div>
