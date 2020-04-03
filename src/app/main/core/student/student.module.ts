@@ -1,8 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SubjectComponent } from './subject.component';
-import { SubjectFormComponent } from './subject-form/subject-form.component';
 import { NgxNotificationMsgModule } from 'ngx-notification-msg'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -12,10 +10,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { StudentComponent } from './student.component';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 
 @NgModule({
-  declarations: [SubjectComponent, SubjectFormComponent],
+  declarations: [StudentComponent, StudentFormComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -33,4 +33,4 @@ import { MatTableModule } from '@angular/material/table';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SubjectModule { }
+export class StudentModule { }

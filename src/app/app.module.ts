@@ -18,6 +18,11 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { CommonModule } from '@angular/common';
+import { SubjectComponent } from './main/core/subject/subject.component';
+import { StudentComponent } from './main/core/student/student.component';
+import { TesteComponent } from './main/core/teste/teste.component';
+import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
+import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.component';
 
 const appRoutes: Routes = [
   {
@@ -33,6 +38,11 @@ const appRoutes: Routes = [
     AuthenticationComponent,
     LoginComponent,
     SubjectFormComponent,
+    SubjectComponent,
+    StudentComponent,
+    TesteComponent,
+    StudentFormComponent,
+    TesteFormComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +54,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]

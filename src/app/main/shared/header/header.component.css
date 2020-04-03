@@ -5,15 +5,15 @@
 
 .header {
     overflow: hidden;
-    background-image:linear-gradient(rgba(0, 139, 139, 0.8), #fff);
-    padding: 20px 10px;
+    background-color: rgba(211, 211, 211, 0.30);
+    padding: 2% 2%;
+    margin: 0;
 }
 
 .header a {
     float: left;
-    color: black;
+    color: #183B69;
     text-align: center;
-    padding: 12px;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;
@@ -27,12 +27,14 @@
 }
 
 .header a:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+    font-weight: bolder;
 }
 
 .header a.active {
     background-color: rgba(0, 139, 139, 0.8);
     color: white;
+
 }
 
 .header-right {

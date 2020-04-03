@@ -1,8 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SubjectComponent } from './subject.component';
-import { SubjectFormComponent } from './subject-form/subject-form.component';
+import { TesteComponent } from './teste.component';
+import { TesteFormComponent } from './teste-form/teste-form.component';
 import { NgxNotificationMsgModule } from 'ngx-notification-msg'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -15,7 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-  declarations: [SubjectComponent, SubjectFormComponent],
+  declarations: [TesteComponent, TesteFormComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -33,4 +33,4 @@ import { MatTableModule } from '@angular/material/table';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SubjectModule { }
+export class TesteModule { }

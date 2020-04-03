@@ -1,8 +1,8 @@
 <div>
-    <form>
-        <button>Cadastrar Disciplina</button>
-    </form>
-    <!-- <table>
+    <div class="btn">
+        <button (click)="registerSubject()">CADASTRAR DISCIPLINA</button>
+    </div>
+    <table>
         <tr>
             <th>Cod Disc</th>
             <th>Disciplina</th>
@@ -10,36 +10,17 @@
             <th>Turno</th>
             <th>Ações</th>
         </tr>
-        <tr >
+        <tr *ngFor="let item of dataSource">
             <td>{{item.codigo}}</td>
             <td>{{item.nome_disciplina}}</td>
             <td>{{item.periodo}}</td>
             <td>{{item.turno}}</td>
             <td>
-                <a href="" title="Editar Disciplina"><i class="material-icons" aria-hidden="true"
-                        role="img">mode_edit</i></a>
-                <a href="" title="Excluir Disciplina"><i class="material-icons" aria-hidden="true"
-                        role="img">clear</i></a>
+                <a title="Editar Disciplina" (click)="editSubject(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">mode_edit</i></a>
+                <a title="Excluir Disciplina" (click)="deleteSubject(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">clear</i></a>
             </td>
         </tr>
-    </table> -->
-    <div fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let item of disciplinas">
-        <div>
-            {{item.codigo}}
-        </div>
-        <div>
-            {{item.nome_disciplina}}
-        </div>
-        <div>
-            {{item.periodo}}
-        </div>
-        <div>
-            {{item.turno}}
-        </div>
-        <div>
-            <a href="" title="Editar Disciplina"><i class="material-icons" aria-hidden="true"
-                    role="img">mode_edit</i></a>
-            <a href="" title="Excluir Disciplina"><i class="material-icons" aria-hidden="true" role="img">clear</i></a>
-        </div>
-    </div>
+    </table>
 </div>

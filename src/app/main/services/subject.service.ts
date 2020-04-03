@@ -9,15 +9,31 @@ import { Observable } from 'rxjs';
 })
 export class SubjectService extends BaseRestService<SubjectModel> {
 
+
+
   constructor(public http: HttpClient) {
     super(http, "disciplina");
   }
 
-  createSubject(subject): Observable<SubjectModel> {
-    return this.http.post<SubjectModel>(this.actionUrl, { disciplina: subject })
+  createSubject(subject): Observable<any> {
+    return this.http.post<any>(this.actionUrl, { disciplina: subject })
   }
 
-  listAll(): Observable<SubjectModel> {
-    return this.http.get<SubjectModel>(this.actionUrl + 's')
+  listAll(): Observable<any> {
+    return this.http.get<any>(this.actionUrl + 's');
   }
+
+  delete(id): Observable<any> {
+    return this.http.delete<any>(this.actionUrl + '/' + id);
+  }
+
+  findOne(id): Observable<any> {
+    return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
+  }
+
+  update(subject, id): Observable<any> {
+    console.log(this.actionUrl + '/' + subject.id, { disciplina: subject })
+    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: subject })
+  }
+
 }

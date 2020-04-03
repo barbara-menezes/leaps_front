@@ -18,7 +18,11 @@ export const ROUTES: Routes = [
         component: SubjectFormComponent
     },
     {
+        path: 'subject/subject-form/edit/:codigo/:id',
+        component: SubjectFormComponent,
+    },
+    {
         path: 'subject',
         component: SubjectComponent
-    }
+    },
 ]
