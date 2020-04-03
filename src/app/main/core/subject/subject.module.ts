@@ -29,7 +29,6 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatTableModule,
     MatTabsModule,
-
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

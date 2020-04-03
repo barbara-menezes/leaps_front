@@ -802,7 +802,7 @@ html {
   }
   
   .choices__placeholder {
-    opacity: .5;
+    opacity: .2;
   }
   
   /*=====  End of Choices  ======*/
@@ -1564,7 +1564,6 @@ html {
   }
   
   .s012 {
-    margin-top: -7%;
     min-height: 100vh;
     display: -ms-flexbox;
     display: flex;
@@ -1582,10 +1581,10 @@ html {
   .s012 form {
     width: 100%;
     max-width: 940px;
-    margin: 0;
-    background: linear-gradient(rgba(152, 251, 152, 0.8) 0%, rgba(0, 139, 139, 0.8) 100%);
+    margin-top: -5%;
+    background-color: #183B69;
     padding: 35px 40px;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   
   .s012 form fieldset {
@@ -1688,9 +1687,10 @@ html {
   
   .s012 form .inner-form .main-form .row .input-wrap {
     background: #fff;
-    border-radius: 3px;
+    border-radius: 13px;
     height: 60px;
     position: relative;
+    width: 100%;
     padding: 10px 15px 10px 48px;
   }
   
@@ -1724,7 +1724,7 @@ html {
   
   .s012 form .inner-form .main-form .row .input-wrap .input-field input {
     font-size: 11.5px;
-    color: #528B8B;
+    color: #183B69;
     background: transparent;
     width: 100%;
     border: 0;
@@ -1775,7 +1775,6 @@ html {
     width: calc((100% - 30px)/2);
     border-radius: 13px;
   }
-
   
   .s012 form .inner-form .main-form .row.third {
     margin-bottom: 30px;
@@ -1880,7 +1879,7 @@ html {
     min-width: 48%;
     height: 45px;
     padding: 0 15px;
-    background: #458B74;
+    background: #45BABB;
     white-space: nowrap;
     border-radius: 3px;
     font-size: 14px;
@@ -1890,10 +1889,12 @@ html {
     cursor: pointer;
     font-weight: 900;
     border-radius: 13px;
+    outline: none;
   }
   
   .s012 form .btn-search:hover {
-    background: #00688B;
+    background:#E0FFFF;
+    color: #183B69;
   }
   
   @media screen and (max-width: 767px) {
@@ -1946,7 +1947,16 @@ html {
   form h2 {
     text-align: center;
     font-weight: bolder;
-    color: #2F4F4F;
+    color: #E0FFFF;
     font-size: 24px;
     padding-bottom: 25px; 
   }
+
+  input::placeholder {
+    color: rgba(69, 168, 169, 0.5) !important;
+  }
+
+  label {
+    margin: 0;
+  }
+  

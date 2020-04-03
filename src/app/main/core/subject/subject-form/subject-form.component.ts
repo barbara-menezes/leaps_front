@@ -9,7 +9,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-subject-form',
   templateUrl: './subject-form.component.html',
-  styleUrls: ['./subject-form.component.css']
+  styleUrls: ['./subject-form.component.scss']
 })
 export class SubjectFormComponent implements OnInit {
 
@@ -30,7 +30,6 @@ export class SubjectFormComponent implements OnInit {
   })
 
   ngOnInit() {
-
     this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
     if (!!this.codigo) {
@@ -44,7 +43,6 @@ export class SubjectFormComponent implements OnInit {
         }
       })
     }
-
   }
 
   saveOrUpdate(): void {
@@ -75,6 +73,10 @@ export class SubjectFormComponent implements OnInit {
         })
       }
     }
+  }
+
+  voltar() {
+    this.router.navigateByUrl('/subject')
   }
 }
 

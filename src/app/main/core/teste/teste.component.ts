@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teste',
   templateUrl: './teste.component.html',
-  styleUrls: ['./teste.component.css']
+  styleUrls: ['./teste.component.scss']
 })
 export class TesteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  cadastrarTeste() {
+    this.router.navigateByUrl('/test/test-form');
   }
 
 }

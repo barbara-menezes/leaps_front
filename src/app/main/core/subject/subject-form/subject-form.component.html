@@ -1,7 +1,7 @@
 <body>
     <div class="s012">
         <form [formGroup]="form">
-            <h2>Cadastro de Disciplinas</h2>
+            <h2>CADASTRO DE DISCIPLINAS</h2>
             <div class="inner-form">
                 <div class="main-form" id="main-form">
                     <div class="row second">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="row second">
-                        <button class="btn-search" type="reset">CANCELAR</button>
+                        <button class="btn-search" (click)="voltar()">CANCELAR</button>
                         <button class="btn-search" (click)="saveOrUpdate()">SALVAR</button>
                     </div>
                 </div>

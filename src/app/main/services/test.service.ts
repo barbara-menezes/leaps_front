@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BaseRestService } from './base-rest.service';
-import { SubjectModel } from '../models/subject-model';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BaseRestService } from './base-rest.service';
+import { HttpClient } from '@angular/common/http';
+import { TesteModel } from '../models/test-model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectService extends BaseRestService<SubjectModel> {
+export class TestService extends BaseRestService<TesteModel>{
 
   constructor(public http: HttpClient) {
-    super(http, "disciplina");
+    super(http, "teste");
   }
 
-  createSubject(subject): Observable<any> {
-    return this.http.post<any>(this.actionUrl, { disciplina: subject })
+  createteste(teste): Observable<any> {
+    return this.http.post<any>(this.actionUrl, { disciplina: teste })
   }
 
   listAll(): Observable<any> {
@@ -29,8 +29,8 @@ export class SubjectService extends BaseRestService<SubjectModel> {
     return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
   }
 
-  update(subject, id): Observable<any> {
-    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: subject })
+  update(teste, id): Observable<any> {
+    console.log(this.actionUrl + '/' + teste.id, { disciplina: teste })
+    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: teste })
   }
-
 }
