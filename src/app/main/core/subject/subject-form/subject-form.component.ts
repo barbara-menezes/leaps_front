@@ -5,6 +5,7 @@ import { NgxNotificationMsgService, NgxNotificationStatusMsg } from 'ngx-notific
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-subject-form',
@@ -20,7 +21,8 @@ export class SubjectFormComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
     private router: Router,
-    private route: ActivatedRoute, ) { }
+    private route: ActivatedRoute,
+    private snackbar: MatSnackBar) { }
 
   form = new FormGroup({
     nome_disciplina: new FormControl('', Validators.required),
@@ -72,6 +74,11 @@ export class SubjectFormComponent implements OnInit {
           }
         })
       }
+    } else {
+      this.snackbar.open("Verifique se todos os campos obrigatórios foram preenchidos corretamente!", " ", {
+        duration: 2800,
+        panelClass: "snack-error"
+      });
     }
   }
 

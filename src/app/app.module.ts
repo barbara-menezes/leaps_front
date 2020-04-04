@@ -23,6 +23,7 @@ import { StudentComponent } from './main/core/student/student.component';
 import { TesteComponent } from './main/core/teste/teste.component';
 import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
 import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRoutes: Routes = [
   {
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     NgxUiLoaderModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]
