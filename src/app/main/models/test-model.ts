@@ -1,5 +1,5 @@
 export interface TesteModel {
-    nome_test: string,
-    status_test: string,
+    nome: string,
+    status: string,
     codigo: string,
 }

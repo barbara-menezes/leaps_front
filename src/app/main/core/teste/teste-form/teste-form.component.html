@@ -1,6 +1,6 @@
 <body>
     <div class="s012">
-        <form [formGroup]="form" id="form">
+        <form [formGroup]="form">
             <h2>CADASTRO DE TESTE</h2>
             <div class="inner-form">
                 <div class="main-form" id="main-form">
@@ -43,7 +43,7 @@
                             </div>
                             <div class="input-field">
                                 <label>STATUS</label>
-                                <input type="text" placeholder="Ex: DISPONÍVEL" formControlName="status_teste" />
+                                <input type="text" placeholder="Ex: DISPONÍVEL" formControlName="status" />
                             </div>
                         </div>
                         <div class="input-wrap  wrapper-divider nome">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="input-field">
                                 <label>NOME DO TESTE</label>
-                                <input placeholder="Ex: TESTE PSICOLÓGICO" formControlName="nome_teste" />
+                                <input placeholder="Ex: TESTE PSICOLÓGICO" formControlName="nome" />
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                     </div> -->
                     <div class="row second">
                         <button class="btn-search" (click)="voltar()">CANCELAR</button>
-                        <button class="btn-search">SALVAR</button>
+                        <button class="btn-search" (click)="saveOrUpdate()">SALVAR</button>
                     </div>
                 </div>
             </div>
