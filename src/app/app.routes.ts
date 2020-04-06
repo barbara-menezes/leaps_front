@@ -5,6 +5,7 @@ import { SubjectFormComponent } from './main/core/subject/subject-form/subject-f
 import { SubjectComponent } from './main/core/subject/subject.component';
 import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.component';
 import { TesteComponent } from './main/core/teste/teste.component';
+import { StudentComponent } from './main/core/student/student.component';
 
 export const ROUTES: Routes = [
     {
@@ -38,5 +39,9 @@ export const ROUTES: Routes = [
     {
         path: 'test',
         component: TesteComponent
+    },
+    {
+        path: 'student',
+        component: StudentComponent
     },
 ]

@@ -1,1 +1,28 @@
-<p>student works!</p>
+<div>
+    <div class="btn">
+        <button (click)="registerStudent()">CADASTRAR ALUNO</button>
+    </div>
+    <table>
+        <tr>
+            <th>Matrícula</th>
+            <th>Aluno</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Disciplinas</th>
+            <th>Ações</th>
+        </tr>
+        <tr *ngFor="let item of dataSource">
+            <td>{{item.matricula}}</td>
+            <td>{{item.nome}}</td>
+            <td>{{item.telefone}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.disciplinas}}</td>
+            <td>
+                <a title="Editar Aluno" (click)="editStudent(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">mode_edit</i></a>
+                <a title="Excluir Aluno" (click)="deleteStudent(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">clear</i></a>
+            </td>
+        </tr>
+    </table>
+</div>

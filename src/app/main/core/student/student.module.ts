@@ -12,7 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { StudentComponent } from './student.component';
 import { StudentFormComponent } from './student-form/student-form.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [StudentComponent, StudentFormComponent],
@@ -29,7 +29,7 @@ import { StudentFormComponent } from './student-form/student-form.component';
     FormsModule,
     MatTableModule,
     MatTabsModule,
-
+    MatSnackBarModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
