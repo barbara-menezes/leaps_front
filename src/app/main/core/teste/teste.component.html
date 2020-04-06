@@ -5,19 +5,18 @@
     <table>
         <tr>
             <th>Código</th>
-            <th>Teste</th>
+            <th>Nome</th>
             <th>Status</th>
             <th>Ações</th>
         </tr>
-        <tr>
-            <!-- <td>{{item.codigo}}</td>
-            <td>{{item.nome_disciplina}}</td>
-            <td>{{item.periodo}}</td>
-            <td>{{item.turno}}</td> -->
-            <!-- <td>
-                <a title="Editar Teste"><i class="material-icons icon" aria-hidden="true" role="img">mode_edit</i></a>
-                <a title="Excluir Teste"><i class="material-icons icon" aria-hidden="true" role="img">clear</i></a>
-            </td> -->
+        <tr *ngFor="let item of dataSource">
+            <td>{{item.codigo}}</td>
+            <td>{{item.nome}}</td>
+            <td>{{item.status}}</td>
+            <td>
+                <a title="Editar Teste"(click)="editTest(item)"><i class="material-icons icon" aria-hidden="true" role="img">mode_edit</i></a>
+                <a title="Excluir Teste"(click)="deleteTest(item)"><i class="material-icons icon" aria-hidden="true" role="img">clear</i></a>
+            </td>
         </tr>
     </table>
 </div>

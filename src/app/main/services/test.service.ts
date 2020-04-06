@@ -14,7 +14,7 @@ export class TestService extends BaseRestService<TesteModel>{
   }
 
   createteste(teste): Observable<any> {
-    return this.http.post<any>(this.actionUrl, { disciplina: teste })
+    return this.http.post<any>(this.actionUrl, { teste: teste })
   }
 
   listAll(): Observable<any> {
@@ -30,7 +30,7 @@ export class TestService extends BaseRestService<TesteModel>{
   }
 
   update(teste, id): Observable<any> {
-    console.log(this.actionUrl + '/' + teste.id, { disciplina: teste })
-    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: teste })
+    console.log(this.actionUrl + '/' + teste.id, { teste: teste })
+    return this.http.put<any>(this.actionUrl + '/' + id, { teste: teste })
   }
 }

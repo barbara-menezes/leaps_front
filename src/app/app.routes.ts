@@ -32,10 +32,10 @@ export const ROUTES: Routes = [
         path: 'test/test-form',
         component: TesteFormComponent
     },
-    // {
-    //     path: 'test/test-form/edit/:codigo/:id',
-    //     component: SubjectFormComponent,
-    // },
+    {
+         path: 'test/test-form/edit/:codigo/:id',
+         component: TesteFormComponent,
+    },
     {
         path: 'test',
         component: TesteComponent
