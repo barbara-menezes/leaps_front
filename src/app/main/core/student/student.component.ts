@@ -1,5 +1,5 @@
 import { NgxNotificationStatusMsg, NgxNotificationMsgService } from 'ngx-notification-msg';
-import { SubjectService } from '../../services/subject.service';
+import { StudentService } from '../../services/student.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class StudentComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'nome', 'telefone', 'email', 'disciplinas'];
   dataSource = [];
 
-  constructor(private service: SubjectService,
+  constructor(private service: StudentService,
     private router: Router,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService) { }
 

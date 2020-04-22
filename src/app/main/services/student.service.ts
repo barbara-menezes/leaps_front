@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BaseRestService } from './base-rest.service';
-import { SubjectModel } from '../models/subject-model';
+import { StudentModel } from '../models/student-model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectService extends BaseRestService<SubjectModel> {
+export class StudentService extends BaseRestService<StudentModel> {
 
   constructor(public http: HttpClient) {
     super(http, "aluno");
@@ -29,8 +29,8 @@ export class SubjectService extends BaseRestService<SubjectModel> {
     return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
   }
 
-  update(subject, id): Observable<any> {
-    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: subject })
+  update(student, id): Observable<any> {
+    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: student })
   }
 
 }

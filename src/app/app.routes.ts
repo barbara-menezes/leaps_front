@@ -6,6 +6,7 @@ import { SubjectComponent } from './main/core/subject/subject.component';
 import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.component';
 import { TesteComponent } from './main/core/teste/teste.component';
 import { StudentComponent } from './main/core/student/student.component';
+import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
 
 export const ROUTES: Routes = [
     {
@@ -43,5 +44,13 @@ export const ROUTES: Routes = [
     {
         path: 'student',
         component: StudentComponent
+    },
+    {
+        path: 'student/student-form',
+        component: StudentFormComponent
+    },
+    {
+        path: 'student/student-form/edit/:codigo/:id',
+        component: StudentFormComponent,
     },
 ]
