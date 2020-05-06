@@ -26,14 +26,14 @@ export class EmprestimoFormComponent implements OnInit {
       status: new FormControl('', Validators.required),
       data_devolucao: new FormControl('', [Validators.required]),
       data: new FormControl('', Validators.required),
-      retorno:  new FormControl('', [Validators.required])
+      retorno_previsto:  new FormControl('', [Validators.required])
     })
 
   ngOnInit() {
     this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
     if (!!this.codigo) {
-      this.service.findOne(this.codigo).subscribe(res => {
+      this.service.findOne(this.id).subscribe(res => {
         if (res.length === 1) {
           let emprestimo = res[0];
           this.form.get('codigo').setValue(emprestimo[0].codigo);

@@ -44,7 +44,7 @@ export class EmprestimoComponent implements OnInit {
   }
 
   editEmprestimo(emprestimo) {
-    this.router.navigate(['emprestimo/emprestimo-form/edit', emprestimo.matricula]);
+    this.router.navigate(['emprestimo/emprestimo-form/edit', emprestimo.id]);
   }
 
 }
