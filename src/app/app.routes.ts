@@ -7,6 +7,8 @@ import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.comp
 import { TesteComponent } from './main/core/teste/teste.component';
 import { StudentComponent } from './main/core/student/student.component';
 import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
+import { CadastroComponent } from './main/core/cadastro/cadastro.component';
+import { CadastroFormComponent } from './main/core/cadastro/cadastro-form/cadastro-form.component';
 
 export const ROUTES: Routes = [
     {
@@ -53,4 +55,17 @@ export const ROUTES: Routes = [
         path: 'student/student-form/edit/:codigo/:id',
         component: StudentFormComponent,
     },
+    {
+        path: 'cadastro',
+        component: CadastroComponent
+    },
+    {
+        path: 'cadastro/cadastro-form',
+        component: CadastroFormComponent
+    },
+    {
+        path: 'cadastro/cadastro-form/edit/:cadastro/:id',
+        component: StudentFormComponent,
+    },
 ]
+
