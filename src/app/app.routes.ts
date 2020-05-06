@@ -7,6 +7,8 @@ import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.comp
 import { TesteComponent } from './main/core/teste/teste.component';
 import { StudentComponent } from './main/core/student/student.component';
 import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
+import { EmprestimoComponent } from './main/core/emprestimo/emprestimo.component';
+import { EmprestimoFormComponent } from './main/core/emprestimo/emprestimo-form/emprestimo-form.component'
 
 export const ROUTES: Routes = [
     {
@@ -52,5 +54,17 @@ export const ROUTES: Routes = [
     {
         path: 'student/student-form/edit/:codigo/:id',
         component: StudentFormComponent,
+    },
+    {
+        path: 'emprestimo',
+        component: EmprestimoComponent
+    },
+    {
+        path: 'emprestimo/emprestimo-form',
+        component: EmprestimoFormComponent
+    },
+    {
+        path: 'emprestimo/emprestimo-form/edit/:codigo/:id',
+        component: EmprestimoFormComponent,
     },
 ]

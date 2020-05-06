@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { StudentComponent } from './student.component';
-import { StudentFormComponent } from './student-form/student-form.component';
+import { StudentFormComponent } from '../student/student-form/student-form.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({

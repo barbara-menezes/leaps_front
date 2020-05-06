@@ -24,6 +24,8 @@ import { TesteComponent } from './main/core/teste/teste.component';
 import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
 import { TesteFormComponent } from './main/core/teste/teste-form/teste-form.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EmprestimoComponent } from './main/core/emprestimo/emprestimo.component';
+import { EmprestimoFormComponent} from './main/core/emprestimo/emprestimo-form/emprestimo-form.component';
 
 const appRoutes: Routes = [
   {
@@ -43,7 +45,9 @@ const appRoutes: Routes = [
     StudentComponent,
     TesteComponent,
     StudentFormComponent,
-    TesteFormComponent
+    TesteFormComponent,
+    EmprestimoComponent,
+    EmprestimoFormComponent,
   ],
   imports: [
     CommonModule,
