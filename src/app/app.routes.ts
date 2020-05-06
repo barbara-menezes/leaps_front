@@ -9,6 +9,8 @@ import { StudentComponent } from './main/core/student/student.component';
 import { StudentFormComponent } from './main/core/student/student-form/student-form.component';
 import { EmprestimoComponent } from './main/core/emprestimo/emprestimo.component';
 import { EmprestimoFormComponent } from './main/core/emprestimo/emprestimo-form/emprestimo-form.component'
+import { CadastroComponent } from './main/core/cadastro/cadastro.component';
+import { CadastroFormComponent } from './main/core/cadastro/cadastro-form/cadastro-form.component';
 
 export const ROUTES: Routes = [
     {
@@ -36,8 +38,8 @@ export const ROUTES: Routes = [
         component: TesteFormComponent
     },
     {
-         path: 'test/test-form/edit/:codigo/:id',
-         component: TesteFormComponent,
+        path: 'test/test-form/edit/:codigo/:id',
+        component: TesteFormComponent,
     },
     {
         path: 'test',
@@ -67,4 +69,18 @@ export const ROUTES: Routes = [
         path: 'emprestimo/emprestimo-form/edit/:codigo/:id',
         component: EmprestimoFormComponent,
     },
+    {
+        path: 'cadastro',
+        component: CadastroComponent
+    },
+    {
+        path: 'cadastro/cadastro-form',
+        component: CadastroFormComponent
+    },
+    {
+        path: 'cadastro/cadastro-form/edit/:cadastro/:id',
+        component: StudentFormComponent,
+    },
 ]
+
+
