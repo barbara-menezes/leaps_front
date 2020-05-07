@@ -22,15 +22,15 @@ export class EmprestimoService extends BaseRestService<EmprestimoModel>{
   }
 
   delete(id): Observable<any> {
-    return this.http.delete<any>(this.actionUrl + '/' + id);
+    return this.http.delete<any>(this.actionUrl + '' + id);
   }
 
   findOne(id): Observable<any> {
-    return this.http.get<any>(this.actionUrl + '/' + id);
+    return this.http.get<any>(this.actionUrl + '' + id);
   }
 
   update(emprestimo, id): Observable<any> {
-    console.log(this.actionUrl + '/' + emprestimo.id, { emprestimo: emprestimo })
-    return this.http.put<any>(this.actionUrl + '/' + id, { emprestimo: emprestimo })
+    console.log(this.actionUrl + '' + emprestimo.id, { emprestimo: emprestimo })
+    return this.http.put<any>(this.actionUrl + '' + id, { emprestimo: emprestimo })
   }
 }

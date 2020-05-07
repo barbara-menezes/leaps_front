@@ -1,5 +1,5 @@
 <div>
-    <div class="btn">
+    <div class="btn-table">
         <button (click)="registerCadastro()">CADASTRO DE USUÁRIOS</button>
     </div>
     <table>
@@ -15,8 +15,8 @@
             <td>{{item.matricula}}</td>
             <td>{{item.usuario}}</td>
             <td>
-                <a title="Editar Usuário" (click)="editCadastro(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">mode_edit</i></a>
+                <a title="Editar Usuário" (click)="editCadastro(item)"><i class="material-icons icon" aria-hidden="true"
+                        role="img">mode_edit</i></a>
                 <a title="Excluir Usuário" (click)="deleteCadastro(item)"><i class="material-icons icon"
                         aria-hidden="true" role="img">clear</i></a>
             </td>

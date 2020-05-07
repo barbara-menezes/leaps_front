@@ -1,5 +1,5 @@
 <div>
-    <div class="btn">
+    <div class="btn-table">
         <button (click)="registerStudent()">CADASTRAR ALUNO</button>
     </div>
     <table>
@@ -18,10 +18,10 @@
             <td>{{item.email}}</td>
             <td>{{item.disciplinas}}</td>
             <td>
-                <a title="Editar Aluno" (click)="editStudent(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">mode_edit</i></a>
-                <a title="Excluir Aluno" (click)="deleteStudent(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">clear</i></a>
+                <a title="Editar Aluno" (click)="editStudent(item)"><i class="material-icons icon" aria-hidden="true"
+                        role="img">mode_edit</i></a>
+                <a title="Excluir Aluno" (click)="deleteStudent(item)"><i class="material-icons icon" aria-hidden="true"
+                        role="img">clear</i></a>
             </td>
         </tr>
     </table>

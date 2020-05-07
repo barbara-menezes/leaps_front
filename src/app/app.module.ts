@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
-import { AuthenticationComponent } from './main/authentication/authentication.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ROUTES } from './app.routes'
@@ -15,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './main/authentication/login/login.component';
 import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { CommonModule } from '@angular/common';
 import { SubjectComponent } from './main/core/subject/subject.component';
@@ -28,6 +26,9 @@ import { EmprestimoComponent } from './main/core/emprestimo/emprestimo.component
 import { EmprestimoFormComponent } from './main/core/emprestimo/emprestimo-form/emprestimo-form.component';
 import { CadastroComponent } from './main/core/cadastro/cadastro.component';
 import { CadastroFormComponent } from './main/core/cadastro/cadastro-form/cadastro-form.component';
+import { LoginModule } from './main/authentication/login/login.module';
+import { JwtInterceptorService } from './helpers/jwt-interceptor.service';
+import { RequestInterceptorService } from './helpers/http-interceptor.service';
 
 const appRoutes: Routes = [
   {
@@ -39,9 +40,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    AuthenticationComponent,
-    LoginComponent,
     SubjectFormComponent,
     SubjectComponent,
     StudentComponent,
@@ -57,6 +55,7 @@ const appRoutes: Routes = [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
+    LoginModule,
     SharedModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
@@ -66,7 +65,9 @@ const appRoutes: Routes = [
     NgxUiLoaderModule,
     MatSnackBarModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

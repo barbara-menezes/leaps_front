@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
 * {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    outline: none;
 }
 
 .header {
@@ -18,12 +21,16 @@
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.header div {
+    cursor: pointer;
 }
 
 .header a.logo {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
-    font-weight: bold;
+    font-family: 'Days One', sans-serif;
+    font-size: 30px;
 }
 
 .header a:hover {
@@ -55,4 +62,8 @@
 
 .router {
     padding: 0 15px;
+}
+
+.router-exit {
+    cursor: pointer;
 }

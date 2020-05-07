@@ -32,13 +32,14 @@ export class SubjectComponent implements OnInit {
   deleteSubject(subject) {
     this.service.delete(subject.id).subscribe(res => {
       if (res) {
+        this.dataSource = res.disciplinas;
         this.ngxNotificationMsgService.open({
           status: NgxNotificationStatusMsg.SUCCESS,
           header: 'Poxa, que pena ...',
           msg: `A disciplina ${subject.nome_disciplina} foi excluída!`
         });
       }
-      this.dataSource = res.disciplinas;
+
     })
   }
 

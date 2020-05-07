@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router'
-import { MainComponent } from './main/main.component'
 import { LoginComponent } from './main/authentication/login/login.component'
 import { SubjectFormComponent } from './main/core/subject/subject-form/subject-form.component'
 import { SubjectComponent } from './main/core/subject/subject.component';
@@ -13,12 +12,12 @@ import { CadastroComponent } from './main/core/cadastro/cadastro.component';
 import { CadastroFormComponent } from './main/core/cadastro/cadastro-form/cadastro-form.component';
 
 export const ROUTES: Routes = [
+    // {
+    //     path: '',
+    //     component: MainComponent
+    // },
     {
         path: '',
-        component: MainComponent
-    },
-    {
-        path: 'login',
         component: LoginComponent
     },
     {

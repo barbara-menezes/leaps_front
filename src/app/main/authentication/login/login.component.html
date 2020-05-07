@@ -1,104 +1,41 @@
-<div class="limiter">
-  <div class="container-login100">
-    <div class="wrap-login100 p-b-160 p-t-50">
-      <form class="login100-form validate-form">        
-        <div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
-          <input class="input100" type="text" name="username">
-          <span class="label-input100">Username</span>
-        </div>
-        
-        
-        <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="pass">
-          <span class="label-input100">Senha</span>
-        </div>
+<div class="main">
 
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
-            ENTRAR
-          </button>
-        </div>
-        
-      </form>
-    </div>
-  </div>
-</div>
 
-<!-- <div class="main">
-  <section class="signup">
-    <div class="container">
-      <div class="signup-content">
-        <div class="signup-form">
-          <h2 class="form-title">Cadastre-se</h2>
-          <form method="POST" class="register-form" id="register-form">
-            <div class="form-group">
-              <label for="nome"><i class="fas fa-user"></i></label>
-              <input type="text" name="nome" id="nome" placeholder="Seu nome..." />
-            </div>
-            <div class="form-group">
-              <label for="user"><i class="fas fa-user-circle"></i></label>
-              <input type="text" name="user" id="user" placeholder="Usuário" />
-            </div>
-            <div class="form-group">
-              <label for="email"><i class="fas fa-envelope"></i></label>
-              <input type="email" name="email" id="email" placeholder="Seu e-mail" />
-            </div>
-            <div class="form-group">
-              <label for="password"><i class="fas fa-lock"></i></label>
-              <input type="password" name="password" id="password" placeholder="****" />
-            </div>
-            <div class="form-group form-button">
-              <input type="submit" name="signup" id="signup" class="form-submit" value="Cadastrar" />
-            </div>
+  <div class="container">
+    <div>
+      <div class="middle">
+        <div id="login">
+
+          <form [formGroup]="loginForm">
+
+            <fieldset class="clearfix">
+
+              <p><span class="fa fa-user"></span><input formControlName="usuario" type="text" placeholder="Username"
+                  required></p>
+              <p><span class="fa fa-lock"></span><input formControlName="senha" type="password" Placeholder="Password"
+                  required></p>
+              <div>
+                <span style="width:48%; text-align:left;  display: inline-block;"><a class="small-text"
+                    href="#">Esqueceu a senha?</a></span>
+                <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="ENTRAR"
+                    (click)="login()"></span>
+              </div>
+
+            </fieldset>
+            <div class="clearfix"></div>
           </form>
-        </div>
-        <div class="signup-image">
-          <figure><img src="https://i.ibb.co/Xb3Z0Wf/signup-image.jpg" alt="Cadastro Imagem"></figure>
-          <a href="#" class="signup-image-link">Eu já sou cadastrado!</a>
+        </div> <!-- end login -->
+        <div></div>
+        <div class="logo">
+          <div>
+            <svg-icon src="../../../../assets/icons/leaps-logo.svg" [svgStyle]="{'fill':'#fff'}"></svg-icon>
+          </div>
+          <div class="text-logo">LEAPS</div>
+
+          <div class="clearfix"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Sing in  Form -->
-  <!-- <section class="sign-in">
-            <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">Create an account</a>
-                    </div>
-
-                    <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="login-form">
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                            </div>
-                        </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> 
-
-</div> -->
+</div>

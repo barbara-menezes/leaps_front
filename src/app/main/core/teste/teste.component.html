@@ -1,5 +1,5 @@
 <div>
-    <div class="btn">
+    <div class="btn-table">
         <button (click)="cadastrarTeste()">CADASTRAR TESTE</button>
     </div>
     <table>
@@ -14,8 +14,10 @@
             <td>{{item.nome}}</td>
             <td>{{item.status}}</td>
             <td>
-                <a title="Editar Teste"(click)="editTest(item)"><i class="material-icons icon" aria-hidden="true" role="img">mode_edit</i></a>
-                <a title="Excluir Teste"(click)="deleteTest(item)"><i class="material-icons icon" aria-hidden="true" role="img">clear</i></a>
+                <a title="Editar Teste" (click)="editTest(item)"><i class="material-icons icon" aria-hidden="true"
+                        role="img">mode_edit</i></a>
+                <a title="Excluir Teste" (click)="deleteTest(item)"><i class="material-icons icon" aria-hidden="true"
+                        role="img">clear</i></a>
             </td>
         </tr>
     </table>

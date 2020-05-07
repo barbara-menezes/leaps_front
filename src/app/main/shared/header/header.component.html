@@ -1,10 +1,24 @@
-<div class="header">
-    <a href="#" class="logo">LEAPS</a>
+<div class="header" *ngIf="isLoged" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <svg-icon src="../../../../assets/icons/leaps-logo.svg"
+                [svgStyle]="{'fill':'#183B69', 'width.px': 30, 'margin-right.px': 10}">
+            </svg-icon>
+        </div>
+        <div>
+            <a href="/test" class="logo">LEAPS</a>
+        </div>
+    </div>
     <div class="header-right">
-        <a class="router" (click)="redirect('cadastro/cadastro-form')">NOVO USUÁRIO</a>
-        <a class="router" (click)="redirect('subject')">DISCIPLINAS</a>
-        <a class="router" (click)="redirect('test')">TESTES</a>
-        <a class="router" (click)="redirect('student')">ALUNOS</a>
-        <a class="router" (click)="redirect('emprestimo')">EMPRESTIMO</a>
+        <a class="router" (click)="redirect('/cadastro/cadastro-form')">NOVO USUÁRIO</a>
+        <a class="router" (click)="redirect('/subject')">DISCIPLINAS</a>
+        <a class="router" (click)="redirect('/test')">TESTES</a>
+        <a class="router" (click)="redirect('/student')">ALUNOS</a>
+        <a class="router" (click)="redirect('/emprestimo')">EMPRÉSTIMO</a>
+        <a class="router" (click)="logout()">SAIR </a>
+        <svg-icon src="../../../../assets/icons/exit.svg"
+            [svgStyle]="{'fill':'#183B69', 'margin-left.px': -12, 'cursor':'pointer', 'width.px': 24}">
+        </svg-icon>
     </div>
 </div>
