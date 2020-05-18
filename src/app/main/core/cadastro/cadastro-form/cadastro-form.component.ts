@@ -22,21 +22,22 @@ export class CadastroFormComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
     form = new FormGroup({
-      nome_usuario: new FormControl('', [Validators.required]),
+      nome: new FormControl('', [Validators.required]),
       email: new FormControl('', Validators.required),
       matricula: new FormControl('', [Validators.required]),
       usuario: new FormControl('', Validators.required),
       senha: new FormControl('', Validators.required),
+      id_tipo_usuario: new FormControl('1')
     })
 
   ngOnInit() {
     this.codigo = this.route.snapshot.paramMap.get("codigo");
-    this.id = this.route.snapshot.paramMap.get("id");
+    this.id = null
     if (!!this.codigo) {
       this.service.findOne(this.codigo).subscribe(res => {
         if (res.length === 1) {
           let usuario = res[0];
-          this.form.get('nome_usuario').setValue(usuario[0].nome_usuario);
+          this.form.get('nome').setValue(usuario[0].nome);
           this.form.get('email').setValue(usuario[0].email);
           this.form.get('matricula').setValue(usuario[0].matricula);
           this.form.get('usuario').setValue(usuario[0].usuario);
@@ -53,10 +54,10 @@ export class CadastroFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
-              msg: `O(a) usuario(a) ${res.usuario.nome_usuario} foi cadastrado(a) com sucesso!`,
+              msg: `O(a) monitor(a)  foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/cadastro')
+            this.router.navigateByUrl('/subject')
           }
         })
       } else {
@@ -65,7 +66,7 @@ export class CadastroFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
-              msg: `O(a) usuario(a) ${this.form.get('nome_usuario').value} foi atualizado(a) com sucesso!`,
+              msg: `O(a) usuario(a) ${this.form.get('nome').value} foi atualizado(a) com sucesso!`,
               delay: 3500
             });
             this.router.navigateByUrl('/cadastro')

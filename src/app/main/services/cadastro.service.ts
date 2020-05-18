@@ -14,7 +14,7 @@ export class CadastroService extends BaseRestService<CadastroModel>{
   }
 
   createCadastro(monitor): Observable<any> {
-    return this.http.post<any>(this.actionUrl, { monitor: monitor})
+    return this.http.post<any>(this.actionUrl, { usuario: monitor, usuario_monitor:{tipo: 'psc'}})
   }
 
   listAll(): Observable<any> {
