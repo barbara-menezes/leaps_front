@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
-  
+
   displayedColumns: string[] = ['codigo', 'nome', 'telefone', 'email', 'disciplinas'];
   dataSource = [];
 
@@ -17,7 +17,7 @@ export class StudentComponent implements OnInit {
     private router: Router,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.service.listAll().subscribe(res => {
       if (res) {
         this.dataSource = res.aluno;
@@ -25,7 +25,7 @@ export class StudentComponent implements OnInit {
     })
   }
 
-  
+
   registerStudent() {
     this.router.navigateByUrl('/student/student-form')
   }
@@ -44,7 +44,7 @@ export class StudentComponent implements OnInit {
   }
 
   editStudent(student) {
-    this.router.navigate(['student/student-form/edit', student.matricula]);
+    this.router.navigate(['student/student-form/edit', student.matricula, student.id]);
   }
 
 }

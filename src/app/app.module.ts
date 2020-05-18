@@ -29,6 +29,7 @@ import { CadastroFormComponent } from './main/core/cadastro/cadastro-form/cadast
 import { LoginModule } from './main/authentication/login/login.module';
 import { JwtInterceptorService } from './helpers/jwt-interceptor.service';
 import { RequestInterceptorService } from './helpers/http-interceptor.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const appRoutes: Routes = [
   {
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     NgxUiLoaderModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

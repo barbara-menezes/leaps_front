@@ -3,7 +3,8 @@ import { StudentService } from 'src/app/main/services/student.service';
 import { NgxNotificationMsgService, NgxNotificationStatusMsg } from 'ngx-notification-msg';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { SubjectService } from 'src/app/main/services/subject.service';
 
 @Component({
   selector: 'app-student-form',
@@ -14,22 +15,31 @@ export class StudentFormComponent implements OnInit {
 
   id: any;
   codigo: any;
+  listDisciplinas: any = [];
 
   constructor(private service: StudentService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private disciplinaService: SubjectService) { }
 
-    form = new FormGroup({
-      matricula: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      nome: new FormControl('', Validators.required),
-      telefone: new FormControl('', [Validators.required]),
-      email: new FormControl('', Validators.required),
-      // disciplinas: new FormControl('', [Validators.required])
-    })
+  form = new FormGroup({
+    matricula: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    nome: new FormControl('', Validators.required),
+    telefone: new FormControl('', [Validators.required]),
+    email: new FormControl('', Validators.required),
+  })
+
+  disciplinas: FormArray = new FormArray([]);
 
   ngOnInit() {
+    this.disciplinaService.listAll().subscribe(res => {
+      if (res) {
+        this.listDisciplinas = res.disciplina;
+      }
+    })
+
     this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
     if (!!this.codigo) {
@@ -46,6 +56,10 @@ export class StudentFormComponent implements OnInit {
   }
 
   saveOrUpdate(): void {
+    if (this.disciplinas.valid) {
+      this.form.addControl('disciplinas', this.disciplinas);
+    }
+
     if (this.form.valid) {
       if (this.id === null) {
         this.service.createStudent(this.form.value).toPromise().then(res => {
@@ -84,4 +98,21 @@ export class StudentFormComponent implements OnInit {
     this.router.navigateByUrl('/student')
   }
 
+  createItem(disciplina) {
+    if (disciplina) {
+      return new FormGroup({
+        codigo: new FormControl(disciplina.codigo, Validators.required),
+        id: new FormControl(disciplina.id, Validators.required),
+        nome_disciplina: new FormControl(disciplina.nome_disciplina, Validators.required),
+        turno: new FormControl(disciplina.turno, Validators.required),
+        periodo: new FormControl(disciplina.periodo, Validators.required)
+      })
+    }
+  }
+
+  adicionarDisciplina(disciplina) {
+    if (disciplina) {
+      this.disciplinas.push(this.createItem(disciplina));
+    }
+  }
 }
