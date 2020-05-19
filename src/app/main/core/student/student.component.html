@@ -16,7 +16,11 @@
             <td>{{item.nome}}</td>
             <td>{{item.telefone}}</td>
             <td>{{item.email}}</td>
-            <td>{{item.disciplinas}}</td>
+            <td > <div *ngFor="let disciplinas of item.disciplinas">
+                {{disciplinas.nome_disciplina}}
+            </div>
+            </td>
+            
             <!-- PARA LISTAR DISCPLINAS FAZER UM *NGFOR NA LISTA PRESENTE EM ITEM.DISCIPLINAS E MOSTRAR A DISCIPLINA 
             EXEMPLO: *ngFor="let disciplina of item.disciplinas" MOSTRAR -> disciplina.nome_disciplina  -->
             <td>
