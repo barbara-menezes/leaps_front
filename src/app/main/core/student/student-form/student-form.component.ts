@@ -31,7 +31,7 @@ export class StudentFormComponent implements OnInit {
     email: new FormControl('', Validators.required),
   })
 
-  disciplinas: FormArray = new FormArray([]);
+  disciplinas: any = [];
 
   ngOnInit() {
     this.disciplinaService.listAll().subscribe(res => {
@@ -56,13 +56,11 @@ export class StudentFormComponent implements OnInit {
   }
 
   saveOrUpdate(): void {
-    if (this.disciplinas.valid) {
-      this.form.addControl('disciplinas', this.disciplinas);
-    }
 
-    if (this.form.valid) {
+
+    if (this.form.valid && this.disciplinas.length > 0) {
       if (this.id === null) {
-        this.service.createStudent(this.form.value).toPromise().then(res => {
+        this.service.createStudent(this.form.value, this.disciplinas).toPromise().then(res => {
           if (res) {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
@@ -98,21 +96,9 @@ export class StudentFormComponent implements OnInit {
     this.router.navigateByUrl('/student')
   }
 
-  createItem(disciplina) {
-    if (disciplina) {
-      return new FormGroup({
-        codigo: new FormControl(disciplina.codigo, Validators.required),
-        id: new FormControl(disciplina.id, Validators.required),
-        nome_disciplina: new FormControl(disciplina.nome_disciplina, Validators.required),
-        turno: new FormControl(disciplina.turno, Validators.required),
-        periodo: new FormControl(disciplina.periodo, Validators.required)
-      })
-    }
-  }
-
   adicionarDisciplina(disciplina) {
     if (disciplina) {
-      this.disciplinas.push(this.createItem(disciplina));
+      this.disciplinas.push(disciplina.id);
     }
   }
 }

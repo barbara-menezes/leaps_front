@@ -13,8 +13,9 @@ export class StudentService extends BaseRestService<StudentModel> {
     super(http, "aluno");
   }
 
-  createStudent(Student): Observable<any> {
-    return this.http.post<any>(this.actionUrl, { aluno: Student })
+  createStudent(student, disciplinas): Observable<any> {
+    student.disciplinas = disciplinas;
+    return this.http.post<any>(this.actionUrl, student)
   }
 
   listAll(): Observable<any> {

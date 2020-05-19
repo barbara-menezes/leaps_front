@@ -17,6 +17,8 @@
             <td>{{item.telefone}}</td>
             <td>{{item.email}}</td>
             <td>{{item.disciplinas}}</td>
+            <!-- PARA LISTAR DISCPLINAS FAZER UM *NGFOR NA LISTA PRESENTE EM ITEM.DISCIPLINAS E MOSTRAR A DISCIPLINA 
+            EXEMPLO: *ngFor="let disciplina of item.disciplinas" MOSTRAR -> disciplina.nome_disciplina  -->
             <td>
                 <a title="Editar Aluno" (click)="editStudent(item)"><i class="material-icons icon" aria-hidden="true"
                         role="img">mode_edit</i></a>
