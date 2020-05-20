@@ -61,7 +61,7 @@ export class SubjectFormComponent implements OnInit {
   saveOrUpdate(): void {
     if (this.form.valid && this.testes.length > 0 ) {
       if (this.id === null) {
-        this.service.createSubject(this.form.value).toPromise().then(res => {
+        this.service.createSubject(this.form.value, this.testes).toPromise().then(res => {
           if (res) {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
