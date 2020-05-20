@@ -13,7 +13,8 @@ export class SubjectService extends BaseRestService<SubjectModel> {
     super(http, "disciplina");
   }
 
-  createSubject(subject): Observable<any> {
+  createSubject(subject, testes): Observable<any> {
+    subject.testes = testes;
     return this.http.post<any>(this.actionUrl, { disciplina: subject })
   }
 

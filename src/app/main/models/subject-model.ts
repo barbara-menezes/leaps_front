@@ -3,4 +3,5 @@ export interface SubjectModel {
     turno: string,
     periodo: string,
     codigo: string,
+    testes: []
 }
