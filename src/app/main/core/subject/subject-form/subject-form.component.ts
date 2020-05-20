@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TestService } from 'src/app/main/services/test.service';
 
 @Component({
   selector: 'app-subject-form',
@@ -16,13 +17,15 @@ export class SubjectFormComponent implements OnInit {
 
   id: any;
   codigo: any;
+  listTestes: any = [];
 
   constructor(private service: SubjectService,
     private ngxService: NgxUiLoaderService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private testService: TestService) { }
 
   form = new FormGroup({
     nome_disciplina: new FormControl('', Validators.required),
@@ -31,7 +34,15 @@ export class SubjectFormComponent implements OnInit {
     turno: new FormControl('', [Validators.required])
   })
 
+  testes: any = [];
+
   ngOnInit() {
+    this.testService.listAll().subscribe(res => {
+      if (res) {
+        this.listTestes = res.teste;
+      }
+    })
+
     this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
     if (!!this.codigo) {
@@ -48,7 +59,7 @@ export class SubjectFormComponent implements OnInit {
   }
 
   saveOrUpdate(): void {
-    if (this.form.valid) {
+    if (this.form.valid && this.testes.length > 0 ) {
       if (this.id === null) {
         this.service.createSubject(this.form.value).toPromise().then(res => {
           if (res) {
@@ -85,5 +96,12 @@ export class SubjectFormComponent implements OnInit {
   voltar() {
     this.router.navigateByUrl('/subject')
   }
+
+  adicionarTeste(teste) {
+    if (teste) {
+      this.testes.push(teste.id);
+    }
+  }
+
 }
 

@@ -76,6 +76,16 @@
                                 <input type="text" placeholder="Ex: MANHÃ" formControlName="turno" />
                             </div>
                         </div>
+                        <div class="row third">
+                            <div class="checkbox">
+                                <p class="selecione-titulo">Selecione os Testes da Disciplina: </p>
+                                <div *ngFor="let item of listTestes">
+                                    <mat-checkbox (change)="adicionarTeste(item)">
+                                        <a class="label-check">{{item.nome}}</a>
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row second">
                         <button class="btn-search" (click)="voltar()">CANCELAR</button>
