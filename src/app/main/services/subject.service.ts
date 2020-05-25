@@ -15,7 +15,7 @@ export class SubjectService extends BaseRestService<SubjectModel> {
 
   createSubject(subject, testes): Observable<any> {
     subject.testes = testes;
-    return this.http.post<any>(this.actionUrl, { disciplina: subject })
+    return this.http.post<any>(this.actionUrl, subject )
   }
 
   listAll(): Observable<any> {
