@@ -16,8 +16,11 @@
                                 </svg>
                             </div>
                             <div class="input-field">
-                                <label>CÓDIGO DO TESTE</label>
-                                <input type="text" placeholder="Ex: 84951.0.0" formControlName="codigo" />
+                                <label>NOME DO ALUNO</label>
+                                <input type="text" matInput formControlName="codigo" [matAutocomplete]="auto">                                 
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of listAlunos" [value]="option.nome">{{option.nome}}</mat-option>
+                                </mat-autocomplete>
                             </div>
                         </div>
                         <div class="input-wrap wrapper-divider">
@@ -42,7 +45,7 @@
                                 </svg>
                             </div>
                             <div class="input-field">
-                                <label>STATUS</label>
+                                <label>TESTE</label>
                                 <input type="text" placeholder="Ex: EMPRESTADO" formControlName="status" />
                             </div>
                         </div>
@@ -89,7 +92,8 @@
                             </div>
                             <div class="input-field">
                                 <label>RETORNO PREVISTO</label>
-                                <input type="date" placeholder="Ex: exemplo@exemplo.com" formControlName="retorno_previsto" />
+                                <input type="date" placeholder="Ex: exemplo@exemplo.com"
+                                    formControlName="retorno_previsto" />
                             </div>
                         </div>
                     </div>

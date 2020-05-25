@@ -4,6 +4,7 @@ import { NgxNotificationMsgService, NgxNotificationStatusMsg } from 'ngx-notific
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { StudentService } from 'src/app/main/services/student.service';
 
 @Component({
   selector: 'app-emprestimo-form',
@@ -14,12 +15,14 @@ export class EmprestimoFormComponent implements OnInit {
 
   id: any;
   codigo: any;
+  listAlunos: any = [];
 
   constructor(private service: EmprestimoService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private studentService: StudentService) { }
 
     form = new FormGroup({
       codigo: new FormControl('', [Validators.required]),
@@ -29,7 +32,19 @@ export class EmprestimoFormComponent implements OnInit {
       retorno_previsto:  new FormControl('', [Validators.required])
     })
 
+
+    alunos: any [];
+
+    
+
+
   ngOnInit() {
+    this.studentService.listAll().subscribe(res => {
+      if (res) {
+        this.listAlunos = res.aluno;
+      }
+    })
+
     this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
     if (!!this.codigo) {
@@ -83,6 +98,12 @@ export class EmprestimoFormComponent implements OnInit {
 
   voltar() {
     this.router.navigateByUrl('/emprestimo')
+  }
+
+  adicionarAluno(aluno) {
+    if (aluno) {
+      this.alunos.push(aluno.id);
+    }
   }
 
 }
