@@ -35,6 +35,8 @@ export class AuthService extends BaseService {
   }
 
   public setToken(token) {
+    token=token.replace('"','');
+    token=token.replace('"','');
     localStorage.setItem('token', token);
   }
 

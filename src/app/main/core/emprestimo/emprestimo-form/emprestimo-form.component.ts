@@ -24,18 +24,18 @@ export class EmprestimoFormComponent implements OnInit {
     private snackbar: MatSnackBar,
     private studentService: StudentService) { }
 
-    form = new FormGroup({
-      codigo: new FormControl('', [Validators.required]),
-      status: new FormControl('', Validators.required),
-      data_devolucao: new FormControl('', [Validators.required]),
-      data: new FormControl('', Validators.required),
-      retorno_previsto:  new FormControl('', [Validators.required])
-    })
+  form = new FormGroup({
+    codigo: new FormControl('', [Validators.required]),
+    status: new FormControl('', Validators.required),
+    data_devolucao: new FormControl('', [Validators.required]),
+    data: new FormControl('', Validators.required),
+    retorno_previsto: new FormControl('', [Validators.required])
+  })
 
 
-    alunos: any [];
+  alunos: any[];
+  teste: any [];
 
-    
 
 
   ngOnInit() {
@@ -102,8 +102,25 @@ export class EmprestimoFormComponent implements OnInit {
 
   adicionarAluno(aluno) {
     if (aluno) {
-      this.alunos.push(aluno.id);
+      try{
+
+        this.studentService.findByNome(aluno).subscribe(res => {
+          if(res)
+          console.log(res);
+          this.teste= res[0];
+          this.teste= this.teste[0].disciplinas; 
+          for(let i =0; this.teste.length>i;i++){
+            for(let n=0; this.teste[i].testes>n;n++){
+              this.teste[i]=this.teste[i].testes[n].nome
+              console.log(this.teste[i])
+              console.log(this.teste[i].testes[n].nome)
+            }
+          }
+        });
+      }
+      catch(error){
+        console.log(error);
+      }
     }
   }
-
 }

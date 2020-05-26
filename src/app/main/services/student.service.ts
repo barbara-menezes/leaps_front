@@ -34,4 +34,8 @@ export class StudentService extends BaseRestService<StudentModel> {
     return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: student })
   }
 
+  findByNome(nome): Observable<any> {
+    return this.http.get<any>(this.actionUrl+ '/pesquisa/nome/'+ nome);
+  }
+
 }
