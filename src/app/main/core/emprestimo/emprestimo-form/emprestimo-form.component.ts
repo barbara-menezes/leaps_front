@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StudentService } from 'src/app/main/services/student.service';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-emprestimo-form',
@@ -27,16 +28,14 @@ export class EmprestimoFormComponent implements OnInit {
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
     status: new FormControl('', Validators.required),
-    data_devolucao: new FormControl('', [Validators.required]),
-    data: new FormControl('', Validators.required),
-    retorno_previsto: new FormControl('', [Validators.required])
+    data_devolucao: new FormControl( moment(new Date()).format(),[Validators.required]),
+    data: new FormControl( moment(new Date()).format(),Validators.required),
+    retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
   })
 
 
   alunos: any[];
-  teste: any [];
-
-
+  testes: any = [];
 
   ngOnInit() {
     this.studentService.listAll().subscribe(res => {
@@ -102,25 +101,31 @@ export class EmprestimoFormComponent implements OnInit {
 
   adicionarAluno(aluno) {
     if (aluno) {
-      try{
-
-        this.studentService.findByNome(aluno).subscribe(res => {
-          if(res)
-          console.log(res);
-          this.teste= res[0];
-          this.teste= this.teste[0].disciplinas; 
-          for(let i =0; this.teste.length>i;i++){
-            for(let n=0; this.teste[i].testes>n;n++){
-              this.teste[i]=this.teste[i].testes[n].nome
-              console.log(this.teste[i])
-              console.log(this.teste[i].testes[n].nome)
-            }
+      this.studentService.findByNome(aluno).toPromise().then(res => {
+        if (res) {
+          let aluno = res[0];
+          this.form.addControl('aluno', new FormControl ([aluno[0].id], Validators.required));
+          if (aluno[0].disciplinas) {
+            aluno[0].disciplinas.forEach(disciplina => {
+              if (disciplina && disciplina.testes.length > 0 ) {
+                disciplina.testes.forEach(teste => {
+                  this.testes.push(teste);
+                })
+                console.log(this.testes);
+              }              
+            })
           }
-        });
-      }
-      catch(error){
+        }
+      }).catch(error => {
         console.log(error);
-      }
+      });
     }
   }
+
+  adicionaTeste (teste){
+    if(teste){
+      this.form.addControl('teste', new FormControl ([teste.id], Validators.required));
+    }
+  }
+
 }

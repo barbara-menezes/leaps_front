@@ -46,7 +46,7 @@ export class StudentFormComponent implements OnInit {
       this.service.findOne(this.codigo).subscribe(res => {
         if (res.length === 1) {
           let aluno = res[0];
-          this.form.get('nome_aluno').setValue(aluno[0].nome_aluno);
+          this.form.get('nome').setValue(aluno[0].nome);
           this.form.get('codigo').setValue(aluno[0].codigo);
           this.form.get('periodo').setValue(aluno[0].periodo);
           this.form.get('turno').setValue(aluno[0].turno)
@@ -65,7 +65,7 @@ export class StudentFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
-              msg: `O(a) aluno(a) ${res.aluno.nome_aluno} foi cadastrado(a) com sucesso!`,
+              msg: `O(a) aluno(a) ${res.aluno.nome} foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
             this.router.navigateByUrl('/student')
@@ -77,7 +77,7 @@ export class StudentFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
-              msg: `O(a) aluno(a) ${this.form.get('nome_aluno').value} foi atualizado(a) com sucesso!`,
+              msg: `O(a) aluno(a) ${this.form.get('nome').value} foi atualizado(a) com sucesso!`,
               delay: 3500
             });
             this.router.navigateByUrl('/student')

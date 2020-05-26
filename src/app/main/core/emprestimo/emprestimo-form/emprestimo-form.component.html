@@ -46,9 +46,9 @@
                             </div>
                             <div class="input-field">
                                 <label>TESTE</label>
-                                <input type="text" matInput placeholder="Ex: EMPRESTADO" formControlName="status" [matAutocomplete]="auto"/>                              
-                                <mat-autocomplete #auto="matAutocomplete">
-                                    <mat-option *ngFor="let option of teste" [value]="option.testes.nome">{{option.testes.nome}}</mat-option>
+                                <input type="text" matInput placeholder="Ex: EMPRESTADO" formControlName="status" [matAutocomplete]="auto1"/>                              
+                                <mat-autocomplete #auto1="matAutocomplete">
+                                    <mat-option *ngFor="let teste of testes"  (optionSelected)='adicionaTeste(teste)' [value]="teste.nome">{{teste.nome}} </mat-option>
                                 </mat-autocomplete>
                             </div>
                         </div>
