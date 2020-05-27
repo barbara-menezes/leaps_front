@@ -32,6 +32,7 @@ import { RequestInterceptorService } from './helpers/http-interceptor.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 const appRoutes: Routes = [
   {
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatCheckboxModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

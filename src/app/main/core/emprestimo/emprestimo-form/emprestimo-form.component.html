@@ -17,7 +17,7 @@
                             </div>
                             <div class="input-field">
                                 <label>NOME DO ALUNO</label>
-                                <input type="text" matInput formControlName="codigo" [matAutocomplete]="auto">                                 
+                                <input type="text" matInput [matAutocomplete]="auto">                                 
                                 <mat-autocomplete  #auto="matAutocomplete" (optionSelected)='adicionarAluno($event.option.value)'>
                                     <mat-option *ngFor="let option of listAlunos" [value]="option.nome">{{option.nome}}</mat-option>
                                 </mat-autocomplete>
@@ -46,9 +46,9 @@
                             </div>
                             <div class="input-field">
                                 <label>TESTE</label>
-                                <input type="text" matInput placeholder="Ex: EMPRESTADO" formControlName="status" [matAutocomplete]="auto1"/>                              
-                                <mat-autocomplete #auto1="matAutocomplete">
-                                    <mat-option *ngFor="let teste of testes"  (optionSelected)='adicionaTeste(teste)' [value]="teste.nome">{{teste.nome}} </mat-option>
+                                <input type="text" matInput placeholder="Ex: EMPRESTADO" [formControl] = "nomeTeste" [matAutocomplete]="auto1"/>                              
+                                <mat-autocomplete #auto1="matAutocomplete" (optionSelected)='adicionaTeste($event.option.value)'>
+                                    <mat-option *ngFor="let teste of testes"  [value]="teste">{{teste.nome}} </mat-option>
                                 </mat-autocomplete>
                             </div>
                         </div>

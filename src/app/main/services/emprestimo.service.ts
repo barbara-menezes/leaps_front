@@ -14,7 +14,7 @@ export class EmprestimoService extends BaseRestService<EmprestimoModel>{
   }
 
   createemprestimo(emprestimo): Observable<any> {
-    return this.http.post<any>(this.actionUrl + 's', { emprestimo: emprestimo })
+    return this.http.post<any>(this.actionUrl + 's', emprestimo )
   }
 
   listAll(): Observable<any> {

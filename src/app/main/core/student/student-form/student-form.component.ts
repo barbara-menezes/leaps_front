@@ -62,25 +62,27 @@ export class StudentFormComponent implements OnInit {
       if (this.id === null) {
         this.service.createStudent(this.form.value, this.disciplinas).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/student')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
               msg: `O(a) aluno(a) ${res.aluno.nome} foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/student')
+            
           }
         })
       } else {
         this.service.update(this.form.value, this.id).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/student')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
               msg: `O(a) aluno(a) ${this.form.get('nome').value} foi atualizado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/student')
+            
           }
         })
       }

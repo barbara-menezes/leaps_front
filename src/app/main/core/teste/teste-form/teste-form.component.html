@@ -43,7 +43,13 @@
                             </div>
                             <div class="input-field">
                                 <label>STATUS</label>
-                                <input type="text" placeholder="Ex: DISPONÍVEL" formControlName="status" />
+                                <mat-form-field>
+                                    
+                                    <mat-select formControlName="status">
+                                        <mat-option value="DISPONIVEL">Disponível</mat-option>
+                                        <mat-option value="EMPRESTADO">Emprestado</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="input-wrap  wrapper-divider nome">

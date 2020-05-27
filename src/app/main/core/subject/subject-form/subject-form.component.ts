@@ -7,17 +7,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TestService } from 'src/app/main/services/test.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-subject-form',
   templateUrl: './subject-form.component.html',
   styleUrls: ['./subject-form.component.scss']
 })
+
 export class SubjectFormComponent implements OnInit {
 
   id: any;
   codigo: any;
   listTestes: any = [];
+
 
   constructor(private service: SubjectService,
     private ngxService: NgxUiLoaderService,
@@ -63,25 +66,25 @@ export class SubjectFormComponent implements OnInit {
       if (this.id === null) {
         this.service.createSubject(this.form.value, this.testes).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/subject')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
               msg: `A disciplina ${res.disciplina.nome_disciplina} foi cadastrada com sucesso!`,
               delay: 3500
-            });
-            this.router.navigateByUrl('/subject')
+            }); 
           }
         })
       } else {
         this.service.update(this.form.value, this.id).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/subject')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
               msg: `A disciplina ${this.form.get('nome_disciplina').value} foi atualizada com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/subject')
           }
         })
       }
@@ -102,6 +105,9 @@ export class SubjectFormComponent implements OnInit {
       this.testes.push(teste.id);
     }
   }
+  
+  
+  
 
 }
 

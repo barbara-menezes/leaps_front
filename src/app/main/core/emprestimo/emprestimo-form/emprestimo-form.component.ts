@@ -26,14 +26,14 @@ export class EmprestimoFormComponent implements OnInit {
     private studentService: StudentService) { }
 
   form = new FormGroup({
-    codigo: new FormControl('', [Validators.required]),
+    codigo: new FormControl(''),
     status: new FormControl('', Validators.required),
     data_devolucao: new FormControl( moment(new Date()).format(),[Validators.required]),
     data: new FormControl( moment(new Date()).format(),Validators.required),
     retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
   })
 
-
+  nomeTeste = new FormControl ();
   alunos: any[];
   testes: any = [];
 
@@ -65,25 +65,27 @@ export class EmprestimoFormComponent implements OnInit {
       if (this.id === null) {
         this.service.createemprestimo(this.form.value).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/emprestimo')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
               msg: `O(a) emprestimo(a) ${res.emprestimo.codigo} foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/emprestimo')
+            
           }
         })
       } else {
         this.service.update(this.form.value, this.id).toPromise().then(res => {
           if (res) {
+            this.router.navigateByUrl('/emprestimo')
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
               msg: `O(a) Empréstimo(a) ${this.form.get('codigo').value} foi atualizado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/emprestimo')
+            
           }
         })
       }
@@ -122,10 +124,13 @@ export class EmprestimoFormComponent implements OnInit {
     }
   }
 
-  adicionaTeste (teste){
+  adicionaTeste(teste){
     if(teste){
       this.form.addControl('teste', new FormControl ([teste.id], Validators.required));
+      this.form.get('status').setValue(teste.status);
+      this.nomeTeste.setValue(teste.nome);
     }
   }
+
 
 }
