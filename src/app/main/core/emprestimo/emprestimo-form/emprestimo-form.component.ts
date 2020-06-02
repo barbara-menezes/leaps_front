@@ -26,8 +26,8 @@ export class EmprestimoFormComponent implements OnInit {
     private studentService: StudentService) { }
 
   form = new FormGroup({
-    codigo: new FormControl(''),
-    status: new FormControl('', Validators.required),
+    codigo: new FormControl('12'),
+    status: new FormControl('emprestado', Validators.required),
     data_devolucao: new FormControl( moment(new Date()).format(),[Validators.required]),
     data: new FormControl( moment(new Date()).format(),Validators.required),
     retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
@@ -51,7 +51,6 @@ export class EmprestimoFormComponent implements OnInit {
         if (res.length === 1) {
           let emprestimo = res[0];
           this.form.get('codigo').setValue(emprestimo[0].codigo);
-          this.form.get('status').setValue(emprestimo[0].status);
           this.form.get('data_devolucao').setValue(emprestimo[0].data_devolucao);
           this.form.get('data').setValue(emprestimo[0].data)
           this.form.get('retorno').setValue(emprestimo[0].retorno)
@@ -106,14 +105,14 @@ export class EmprestimoFormComponent implements OnInit {
       this.studentService.findByNome(aluno).toPromise().then(res => {
         if (res) {
           let aluno = res[0];
-          this.form.addControl('aluno', new FormControl ([aluno[0].id], Validators.required));
+          console.log(aluno)
+          this.form.addControl('alunos', new FormControl ([aluno[0].id], Validators.required));
           if (aluno[0].disciplinas) {
             aluno[0].disciplinas.forEach(disciplina => {
               if (disciplina && disciplina.testes.length > 0 ) {
                 disciplina.testes.forEach(teste => {
                   this.testes.push(teste);
                 })
-                console.log(this.testes);
               }              
             })
           }
@@ -126,8 +125,8 @@ export class EmprestimoFormComponent implements OnInit {
 
   adicionaTeste(teste){
     if(teste){
-      this.form.addControl('teste', new FormControl ([teste.id], Validators.required));
-      this.form.get('status').setValue(teste.status);
+      this.form.addControl('testes', new FormControl ([teste.id], Validators.required));
+      this.form.get('status').setValue("emprestado");
       this.nomeTeste.setValue(teste.nome);
     }
   }

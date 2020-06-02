@@ -22,7 +22,7 @@ export class EmprestimoService extends BaseRestService<EmprestimoModel>{
   }
 
   delete(id): Observable<any> {
-    return this.http.delete<any>(this.actionUrl + '' + id);
+    return this.http.delete<any>(this.actionUrl + '/' + id);
   }
 
   findOne(id): Observable<any> {

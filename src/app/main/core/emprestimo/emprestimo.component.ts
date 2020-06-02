@@ -30,7 +30,7 @@ export class EmprestimoComponent implements OnInit {
     this.router.navigateByUrl('/emprestimo/emprestimo-form')
   }
 
-  deleteEmprestimo(emprestimo) {
+  devolverEmprestimo(emprestimo) {
     this.service.delete(emprestimo.id).subscribe(res => {
       if (res) {
         this.ngxNotificationMsgService.open({

@@ -4,24 +4,24 @@
     </div>
     <table>
         <tr>
-            <th>Codigo</th>
+            <th>Teste</th>
+            <th>Aluno</th>
             <th>Status</th>
-            <th>Data Devolução</th>
             <th>Data Empréstimo</th>
             <th>Retorno Previsto</th>
             <th>Ações</th>
         </tr>
         <tr *ngFor="let item of dataSource">
-            <td>{{item.codigo}}</td>
+            <td>{{item.testes[0].nome}}</td>
+            <td>{{item.alunos[0].nome}}</td>
             <td>{{item.status}}</td>
-            <td>{{item.data_devolucao}}</td>
             <td>{{item.data}}</td>
             <td>{{item.retorno_previsto}}</td>
             <td>
-                <a title="Editar Emprestimo" (click)="editEmprestimo(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">mode_edit</i></a>
-                <a title="Excluir Emprestimo" (click)="deleteEmprestimo(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">clear</i></a>
+                <!-- <a title="Editar Emprestimo" (click)="editEmprestimo(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">mode_edit</i></a> -->
+                <a title="Devolver Emprestimo" (click)="devolverEmprestimo(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">autorenew</i></a>
             </td>
         </tr>
     </table>
