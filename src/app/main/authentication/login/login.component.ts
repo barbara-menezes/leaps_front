@@ -1,10 +1,12 @@
 
-import { AuthService } from '../../services/auth.service'; import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
+import { AuthService } from '../../services/auth.service'; 
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 import { UserAcessAuth } from "../../../helpers/user-access.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -73,18 +75,18 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
   login() {
     if (this.loginForm.valid) {
       var resp = this.service
         .login(this.loginForm.value)
         .pipe(take(1))
         .subscribe(this._subscribeAction(), err => {
-          // if (err.error === 'UserNotFoundException') {
-          //   this._snackBar.open("Login/Senha inválidos! Por favor, tente novamente!", "", {
-          //     duration: 2800,
-          //     panelClass: 'snack-error'
-          //   })
+          if (err === "Conflict") {
+            this._snackBar.open("Login/Senha inválidos! Por favor, tente novamente!", "", {
+              duration: 2800,
+              panelClass: 'snack-error'
+            })
+          }
           // } else if (err.error === 'UserDisabledException ') {
           //   this._snackBar.open("Foram encontrados problema na sua identificação, entre em contato com nossa equipe de atendimento ao cliente.", "", {
           //     duration: 2800,

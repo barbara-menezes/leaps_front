@@ -8,8 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const routes = [
     {
@@ -31,8 +30,8 @@ const routes = [
         MatInputModule,
         AngularSvgIconModule,
         FormsModule,
-        ReactiveFormsModule
-
+        ReactiveFormsModule,
+        MatTooltipModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
