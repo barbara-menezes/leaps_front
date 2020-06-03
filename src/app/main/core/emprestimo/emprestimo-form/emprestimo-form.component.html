@@ -17,9 +17,11 @@
                             </div>
                             <div class="input-field">
                                 <label>NOME DO ALUNO</label>
-                                <input type="text" matInput [matAutocomplete]="auto">                                 
-                                <mat-autocomplete  #auto="matAutocomplete" (optionSelected)='adicionarAluno($event.option.value)'>
-                                    <mat-option *ngFor="let option of listAlunos" [value]="option.nome">{{option.nome}}</mat-option>
+                                <input type="text" required matInput [matAutocomplete]="auto" [formControl]="nomeAluno">                                 
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='adicionarAluno($event.option.value)'>
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option}}
+                                    </mat-option>
                                 </mat-autocomplete>
                             </div>
                         </div>

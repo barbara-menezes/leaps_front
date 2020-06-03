@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StudentService } from 'src/app/main/services/student.service';
 import * as moment from "moment";
+import { startWith, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-emprestimo-form',
@@ -17,6 +19,8 @@ export class EmprestimoFormComponent implements OnInit {
   id: any;
   codigo: any;
   listAlunos: any = [];
+  listAlunosNome: any = [];
+  filteredOptions: Observable<string[]>;
 
   constructor(private service: EmprestimoService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
@@ -26,7 +30,7 @@ export class EmprestimoFormComponent implements OnInit {
     private studentService: StudentService) { }
 
   form = new FormGroup({
-    codigo: new FormControl('12'),
+    codigo: new FormControl(),
     status: new FormControl('emprestado', Validators.required),
     data_devolucao: new FormControl( moment(new Date()).format(),[Validators.required]),
     data: new FormControl( moment(new Date()).format(),Validators.required),
@@ -34,13 +38,22 @@ export class EmprestimoFormComponent implements OnInit {
   })
 
   nomeTeste = new FormControl ();
+  nomeAluno = new FormControl ();
   alunos: any[];
   testes: any = [];
 
   ngOnInit() {
+
     this.studentService.listAll().subscribe(res => {
       if (res) {
         this.listAlunos = res.aluno;
+        for (let index = 0; index < res.aluno.length; index++) {
+          this.listAlunosNome[index] = res.aluno[index].nome;
+        }
+        this.filteredOptions = this.nomeAluno.valueChanges.pipe(
+          startWith(''),
+          map(value => this.filter(value))
+        );
       }
     })
 
@@ -57,6 +70,11 @@ export class EmprestimoFormComponent implements OnInit {
         }
       })
     }
+  }
+
+  private filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.listAlunosNome.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
   saveOrUpdate(): void {
