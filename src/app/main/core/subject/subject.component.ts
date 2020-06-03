@@ -38,6 +38,7 @@ export class SubjectComponent implements OnInit {
           header: 'Poxa, que pena ...',
           msg: `A disciplina ${subject.nome_disciplina} foi excluída!`
         });
+        setTimeout(() => {  window.location.reload(); }, 700);
       }
 
     })

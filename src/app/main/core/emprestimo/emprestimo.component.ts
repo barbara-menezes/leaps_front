@@ -38,6 +38,7 @@ export class EmprestimoComponent implements OnInit {
           header: 'Poxa, que pena ...',
           msg: `O(a) Empréstimo(a) ${emprestimo.nome} foi excluído(a)!`
         });
+        setTimeout(() => {  window.location.reload(); }, 700);
       }
       this.dataSource = res.emprestimo;
     })

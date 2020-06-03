@@ -38,6 +38,7 @@ export class CadastroComponent implements OnInit {
           header: 'Poxa, que pena ...',
           msg: `O(a) Usuario(a) ${cadastro.nome} foi excluído(a)!`
         });
+        setTimeout(() => {  window.location.reload(); }, 700);
       }
       this.dataSource = res.cadastros;
     })

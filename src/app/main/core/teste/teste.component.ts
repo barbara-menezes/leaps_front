@@ -37,6 +37,7 @@ export class TesteComponent implements OnInit {
           header: 'Poxa, que pena ...',
           msg: `O teste ${teste.nome} foi excluido!`
         });
+        setTimeout(() => {  window.location.reload(); }, 700);
       }
       this.dataSource = res.teste;
     })
