@@ -77,8 +77,8 @@ export const ROUTES: Routes = [
         component: CadastroFormComponent
     },
     {
-        path: 'cadastro/cadastro-form/edit/:cadastro/:id',
-        component: StudentFormComponent,
+        path: 'cadastro/cadastro-form/edit/:codigo/:id',
+        component: CadastroFormComponent,
     },
 ]
 

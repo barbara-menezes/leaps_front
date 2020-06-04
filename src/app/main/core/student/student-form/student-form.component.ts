@@ -47,9 +47,9 @@ export class StudentFormComponent implements OnInit {
         if (res.length === 1) {
           let aluno = res[0];
           this.form.get('nome').setValue(aluno[0].nome);
-          this.form.get('codigo').setValue(aluno[0].codigo);
-          this.form.get('periodo').setValue(aluno[0].periodo);
-          this.form.get('turno').setValue(aluno[0].turno)
+          this.form.get('matricula').setValue(aluno[0].matricula);
+          this.form.get('telefone').setValue(aluno[0].telefone);
+          this.form.get('email').setValue(aluno[0].email)
         }
       })
     }

@@ -18,7 +18,7 @@ export class CadastroService extends BaseRestService<CadastroModel>{
   }
 
   listAll(): Observable<any> {
-    return this.http.get<any>(this.actionUrl + 's');
+    return this.http.get<any>(this.actionUrl);
   }
 
   delete(id): Observable<any> {
@@ -26,7 +26,7 @@ export class CadastroService extends BaseRestService<CadastroModel>{
   }
 
   findOne(id): Observable<any> {
-    return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
+    return this.http.get<any>(this.actionUrl + '/' + id);
   }
 
   update(cadastro, id): Observable<any> {

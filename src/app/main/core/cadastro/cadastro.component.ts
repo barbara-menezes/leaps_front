@@ -20,7 +20,7 @@ export class CadastroComponent implements OnInit {
   ngOnInit(){
     this.service.listAll().subscribe(res => {
       if (res) {
-        this.dataSource = res.cadastro;
+        this.dataSource = res.usuario;
       }
     })
   }
@@ -45,7 +45,7 @@ export class CadastroComponent implements OnInit {
   }
 
   editCadastro(cadastro) {
-    this.router.navigate(['cadastro/cadastro-form/edit', cadastro.matricula]);
+    this.router.navigate(['cadastro/cadastro-form/edit',cadastro.id_usuario, cadastro.id]);
   }
 
 }

@@ -17,7 +17,6 @@ import { Observable } from 'rxjs';
 export class EmprestimoFormComponent implements OnInit {
 
   id: any;
-  codigo: any;
   listAlunos: any = [];
   listAlunosNome: any = [];
   filteredOptions: Observable<string[]>;
@@ -30,9 +29,8 @@ export class EmprestimoFormComponent implements OnInit {
     private studentService: StudentService) { }
 
   form = new FormGroup({
-    codigo: new FormControl(),
     status: new FormControl('emprestado', Validators.required),
-    data_devolucao: new FormControl( moment(new Date()).format(),[Validators.required]),
+    data_devolucao: new FormControl( moment(new Date()).format()),
     data: new FormControl( moment(new Date()).format(),Validators.required),
     retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
   })
@@ -57,13 +55,11 @@ export class EmprestimoFormComponent implements OnInit {
       }
     })
 
-    this.codigo = this.route.snapshot.paramMap.get("codigo");
     this.id = this.route.snapshot.paramMap.get("id");
-    if (!!this.codigo) {
+    if (!!this.id) {
       this.service.findOne(this.id).subscribe(res => {
         if (res.length === 1) {
           let emprestimo = res[0];
-          this.form.get('codigo').setValue(emprestimo[0].codigo);
           this.form.get('data_devolucao').setValue(emprestimo[0].data_devolucao);
           this.form.get('data').setValue(emprestimo[0].data)
           this.form.get('retorno').setValue(emprestimo[0].retorno)
@@ -86,7 +82,7 @@ export class EmprestimoFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
-              msg: `O(a) emprestimo(a) ${res.emprestimo.codigo} foi cadastrado(a) com sucesso!`,
+              msg: `O(a) emprestimo foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
             
@@ -99,7 +95,7 @@ export class EmprestimoFormComponent implements OnInit {
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.INFO,
               header: 'Ebaa!',
-              msg: `O(a) Empréstimo(a) ${this.form.get('codigo').value} foi atualizado(a) com sucesso!`,
+              msg: `O(a) Empréstimo foi atualizado(a) com sucesso!`,
               delay: 3500
             });
             

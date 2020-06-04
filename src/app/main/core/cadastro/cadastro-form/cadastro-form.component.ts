@@ -50,10 +50,10 @@ export class CadastroFormComponent implements OnInit {
       this.service.findOne(this.codigo).subscribe(res => {
         if (res.length === 1) {
           let usuario = res[0];
-          this.form.get('nome').setValue(usuario[0].nome);
-          this.form.get('email').setValue(usuario[0].email);
-          this.form.get('matricula').setValue(usuario[0].matricula);
-          this.form.get('usuario').setValue(usuario[0].usuario);
+          this.form.get('nome').setValue(usuario[0].id);
+          this.form.get('email').setValue(usuario[0].createdAt);
+          this.form.get('matricula').setValue(usuario[0].id_usuario);
+          this.form.get('usuario').setValue(usuario[0].tipo);
         }
       })
     }
@@ -63,14 +63,21 @@ export class CadastroFormComponent implements OnInit {
     if (this.form.valid) {
       if (this.id === null) {
         this.service.createCadastro(this.form.value).toPromise().then(res => {
-          if (res) {
+          if (res.error==="Usuario ja existe.") {
+            this.ngxNotificationMsgService.open({
+              status: NgxNotificationStatusMsg.INFO,
+              header: 'Monitor já cadastrado!',
+              msg: `MATRÍCULA ou o USERNAME já está sendo utilizado por outro usuário!`,
+              delay: 5500
+            });
+          }else if(res){
             this.ngxNotificationMsgService.open({
               status: NgxNotificationStatusMsg.SUCCESS,
               header: 'Parabéns!',
               msg: `O(a) monitor(a)  foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
-            this.router.navigateByUrl('/subject')
+            this.router.navigateByUrl('/cadastro')
           }
         })
       } else {
@@ -96,6 +103,12 @@ export class CadastroFormComponent implements OnInit {
 
   voltar() {
     this.router.navigateByUrl('/cadastro')
+  }
+
+  adicionaTeste(teste){
+    if(teste){
+      this.form.addControl('usuario_monitor', new FormControl ("tipo: AED", Validators.required));
+    }
   }
 
 }
