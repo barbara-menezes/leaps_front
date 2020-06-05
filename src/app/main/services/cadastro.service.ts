@@ -30,7 +30,6 @@ export class CadastroService extends BaseRestService<CadastroModel>{
   }
 
   update(cadastro, id): Observable<any> {
-    console.log(this.actionUrl + '/' + cadastro.id, { cadastro: cadastro })
     return this.http.put<any>(this.actionUrl + '/' + id, { cadastro: cadastro })
   }
 }

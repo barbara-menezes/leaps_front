@@ -1,9 +1,12 @@
 export interface CadastroModel {
+    id: number,
     nome: string,
-    usuario: string,
-    matricula: string,
     email: string,
+    matricula: string,
+    usuario: string,
     senha: string,
-    id_tipo_usuario: number
+    id_tipo_usuario: number,
+    createdAt: string,
+    updatedAt:string
 }
 

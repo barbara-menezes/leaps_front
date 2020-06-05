@@ -45,7 +45,7 @@ export class CadastroComponent implements OnInit {
   }
 
   editCadastro(cadastro) {
-    this.router.navigate(['cadastro/cadastro-form/edit',cadastro.id_usuario, cadastro.id]);
+    this.router.navigate(['cadastro/cadastro-form/edit',cadastro.id, cadastro.id_tipo_usuario]);
   }
 
 }

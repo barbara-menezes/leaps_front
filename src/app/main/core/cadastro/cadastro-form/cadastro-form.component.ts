@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CadastroFormComponent implements OnInit {
 
   id: any;
-  codigo: any;
+  id_tipo_usuario: any;
 
   constructor(private service: CadastroService,
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
@@ -44,19 +44,26 @@ export class CadastroFormComponent implements OnInit {
       document.getElementById('pass')["type"] = 'password';
     });
 
-    this.codigo = this.route.snapshot.paramMap.get("codigo");
-    this.id = null
-    if (!!this.codigo) {
-      this.service.findOne(this.codigo).subscribe(res => {
-        if (res.length === 1) {
-          let usuario = res[0];
-          this.form.get('nome').setValue(usuario[0].id);
-          this.form.get('email').setValue(usuario[0].createdAt);
-          this.form.get('matricula').setValue(usuario[0].id_usuario);
-          this.form.get('usuario').setValue(usuario[0].tipo);
-        }
-      })
+    this.id_tipo_usuario = this.route.snapshot.paramMap.get("id_tipo_usuario");
+    this.id = this.route.snapshot.paramMap.get("id");
+    if (!!this.id_tipo_usuario) {
+      try{
+        this.service.findOne(this.id_tipo_usuario).subscribe(res => {
+          if(res){
+            let usuario = res.usuario;
+            this.form.get('nome').setValue(usuario.nome);
+            this.form.get('email').setValue(usuario.email);
+            this.form.get('matricula').setValue(usuario.matricula);
+            this.form.get('usuario').setValue(usuario.usuario)
+          } 
+        })
+      }
+      catch(error){
+        console.log(error);
+      }
+
     }
+    
   }
 
   saveOrUpdate(): void {

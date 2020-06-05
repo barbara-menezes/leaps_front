@@ -27,6 +27,7 @@ export class StudentService extends BaseRestService<StudentModel> {
   }
 
   findOne(id): Observable<any> {
+    var teste = this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
     return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
   }
 
