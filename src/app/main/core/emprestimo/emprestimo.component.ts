@@ -3,6 +3,7 @@ import { EmprestimoService } from '../../services/emprestimo.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-emprestimo',
@@ -40,6 +41,21 @@ export class EmprestimoComponent implements OnInit {
   }
 
   devolverEmprestimo(emprestimo) {
+    var devolvido={data_devolucao:new Date().toLocaleDateString()}
+    this.service.update(devolvido, emprestimo.id).toPromise().then(res => {
+      if (res) {
+        this.ngxNotificationMsgService.open({
+          status: NgxNotificationStatusMsg.SUCCESS,
+          header: 'Uhuuu!',
+          msg: `O(a) Teste(a) ${emprestimo.testes[0].nome} foi devolvido(a)!`
+        });
+        setTimeout(() => { this.ngOnInit(); }, 700);
+      }
+      this.dataSource = res.emprestimo;
+    })
+  }
+
+  deletarEmprestimo(emprestimo) {
     this.service.delete(emprestimo.id).subscribe(res => {
       if (res) {
         this.ngxNotificationMsgService.open({
@@ -47,14 +63,14 @@ export class EmprestimoComponent implements OnInit {
           header: 'Poxa, que pena ...',
           msg: `O(a) Empréstimo(a) ${emprestimo.nome} foi excluído(a)!`
         });
-        setTimeout(() => {  window.location.reload(); }, 700);
+        setTimeout(() => {  this.ngOnInit(); }, 700);
       }
       this.dataSource = res.emprestimo;
     })
   }
 
-  editEmprestimo(emprestimo) {
-    this.router.navigate(['emprestimo/emprestimo-form/edit', emprestimo.id]);
-  }
+  // editEmprestimo(emprestimo) {
+  //   this.router.navigate(['emprestimo/emprestimo-form/edit', emprestimo.id]);
+  // }
 
 }

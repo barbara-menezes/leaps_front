@@ -31,7 +31,7 @@ export class EmprestimoFormComponent implements OnInit {
   form = new FormGroup({
     status: new FormControl('emprestado', Validators.required),
     data_devolucao: new FormControl( moment(new Date()).format()),
-    data: new FormControl( moment(new Date()).format(),Validators.required),
+    data: new FormControl( moment(new Date()).format(),[Validators.required]),
     retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
   })
 
@@ -119,7 +119,6 @@ export class EmprestimoFormComponent implements OnInit {
       this.studentService.findByNome(aluno).toPromise().then(res => {
         if (res) {
           let aluno = res[0];
-          console.log(aluno)
           this.form.addControl('alunos', new FormControl ([aluno[0].id], Validators.required));
           if (aluno[0].disciplinas) {
             aluno[0].disciplinas.forEach(disciplina => {

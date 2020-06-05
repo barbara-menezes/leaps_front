@@ -30,7 +30,6 @@ export class EmprestimoService extends BaseRestService<EmprestimoModel>{
   }
 
   update(emprestimo, id): Observable<any> {
-    console.log(this.actionUrl + '' + emprestimo.id, { emprestimo: emprestimo })
-    return this.http.put<any>(this.actionUrl + '' + id, { emprestimo: emprestimo })
+    return this.http.put<any>(this.actionUrl + '/devolucao/' + id, { emprestimo })
   }
 }

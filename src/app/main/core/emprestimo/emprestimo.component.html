@@ -18,10 +18,10 @@
             <td>{{item.data}}</td>
             <td>{{item.retorno_previsto}}</td>
             <td>
-                <!-- <a title="Editar Emprestimo" (click)="editEmprestimo(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">mode_edit</i></a> -->
                 <a title="Devolver Emprestimo" (click)="devolverEmprestimo(item)"><i class="material-icons icon"
                         aria-hidden="true" role="img">autorenew</i></a>
+                <a title="Editar Emprestimo" (click)="deletarEmprestimo(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">clear</i></a>
             </td>
         </tr>
     </table>
