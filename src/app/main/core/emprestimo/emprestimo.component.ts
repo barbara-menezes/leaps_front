@@ -2,6 +2,7 @@ import { NgxNotificationStatusMsg, NgxNotificationMsgService } from 'ngx-notific
 import { EmprestimoService } from '../../services/emprestimo.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-emprestimo',
@@ -21,11 +22,19 @@ export class EmprestimoComponent implements OnInit {
     this.service.listAll().subscribe(res => {
       if (res) {
         this.dataSource = res.emprestimo;
+        for (let index = 0; index < res.emprestimo.length; index++) {
+          this.dataSource[index].retorno_previsto= this.dataFormatada(this.dataSource[index].retorno_previsto);
+          this.dataSource[index].data = this.dataFormatada(this.dataSource[index].data);
+        }
       }
     })
   }
 
-  
+  dataFormatada(str){
+    var res = str.split("-");
+    return res[2]+"/"+res[1]+"/"+res[0];
+  }
+
   registerEmprestimo() {
     this.router.navigateByUrl('/emprestimo/emprestimo-form')
   }

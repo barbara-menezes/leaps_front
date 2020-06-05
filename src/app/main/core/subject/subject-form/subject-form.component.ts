@@ -55,7 +55,7 @@ export class SubjectFormComponent implements OnInit {
           this.form.get('nome_disciplina').setValue(disciplina[0].nome_disciplina);
           this.form.get('codigo').setValue(disciplina[0].codigo);
           this.form.get('periodo').setValue(disciplina[0].periodo);
-          this.form.get('turno').setValue(disciplina[0].turno)
+          this.form.get('turno').setValue(disciplina[0].turno);
         }
       })
     }
