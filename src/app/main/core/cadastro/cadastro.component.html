@@ -8,19 +8,19 @@
             <th>Nome</th>
             <th>E-mail</th>
             <th>UserName</th>
-            <th>Ações</th>
+            
         </tr>
         <tr *ngFor="let item of dataSource">
             <td>{{item.matricula}}</td>
             <td>{{item.nome}}</td>
             <td>{{item.email}}</td>
             <td>{{item.usuario}}</td>
-            <td>
+            <!-- <td>
                 <a title="Editar Usuário" (click)="editCadastro(item)"><i class="material-icons icon" aria-hidden="true"
                         role="img">mode_edit</i></a>
-                <!-- <a title="Excluir Usuário" (click)="deleteCadastro(item)"><i class="material-icons icon"
-                        aria-hidden="true" role="img">clear</i></a> -->
-            </td>
+                <a title="Excluir Usuário" (click)="deleteCadastro(item)"><i class="material-icons icon"
+                        aria-hidden="true" role="img">clear</i></a>
+            </td> -->
         </tr>
     </table>
 </div>

@@ -31,8 +31,8 @@ export class EmprestimoComponent implements OnInit {
     })
   }
 
-  dataFormatada(str){
-    var res = str.split("-");
+  dataFormatada(data){
+    var res = data.split("-");
     return res[2]+"/"+res[1]+"/"+res[0];
   }
 
