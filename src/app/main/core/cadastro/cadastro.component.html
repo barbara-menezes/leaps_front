@@ -2,7 +2,10 @@
     <div class="btn-table">
         <button (click)="registerCadastro()">CADASTRO DE MONITORES</button>
     </div>
-    <table>
+    <div class="input-field">
+            <input type="number" id="myInput" (keyup)="myFunction()" placeholder="Pesquisar por matrícula">
+    </div>
+    <table id="myTable">
         <tr>
             <th>Matricula</th>
             <th>Nome</th>

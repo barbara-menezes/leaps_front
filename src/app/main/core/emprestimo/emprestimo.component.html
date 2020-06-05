@@ -2,7 +2,10 @@
     <div class="btn-table">
         <button (click)="registerEmprestimo()">CADASTRAR EMPRESTIMO</button>
     </div>
-    <table>
+    <div class="input-field">
+        <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Pesquisar pelo nome do teste">
+    </div>
+    <table id="myTable">
         <tr>
             <th>Teste</th>
             <th>Aluno</th>

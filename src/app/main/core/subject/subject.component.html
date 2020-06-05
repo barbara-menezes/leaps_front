@@ -2,7 +2,10 @@
     <div class="btn-table">
         <button (click)="registerSubject()">CADASTRAR DISCIPLINA</button>
     </div>
-    <table>
+    <div class="input-field">
+        <input type="number" id="myInput" (keyup)="myFunction()" placeholder="Pesquisar por Código">
+</div>
+    <table id="myTable">
         <tr>
             <th>Código</th>
             <th>Disciplina</th>
