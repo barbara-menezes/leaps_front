@@ -56,11 +56,43 @@ table {
     appearance: textfield;
 
   }
-  #myInput {
-    background-position: 10px 12px; /* Position the search icon */
-    width: 25%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-left: 5%; /* Add some space below the input */
+  .input-field{
+    margin-left: 5%;
+    align-content: center;
+    justify-content: center;
   }
+  #myInput {
+    font-family: monospace, monospace;
+    transition: width 0.4s ease-in-out;
+    background-position: 10px 12px; 
+    padding: 12px 20px 12px 0px; 
+    font-size: 20px; 
+    border: none;
+    border-bottom: 2px solid #45BABB;
+    width: 30%; 
+  }
+  #myInput:focus {
+    border-color: #183B69;
+    outline: 0;
+    width: 50%;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  #myInput1 {
+    font-family: monospace, monospace;
+    transition: width 0.4s ease-in-out;
+    background-position: 10px 12px; 
+    padding: 12px 20px 12px 0px; 
+    font-size: 20px; 
+    border: none;
+    border-bottom: 2px solid #45BABB;
+    width: 30%; 
+  }
+  #myInput1:focus {
+    border-color: #183B69;
+    outline: 0;
+    width: 50%;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+
