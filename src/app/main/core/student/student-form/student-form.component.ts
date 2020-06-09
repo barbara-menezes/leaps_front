@@ -50,12 +50,7 @@ export class StudentFormComponent implements OnInit {
           this.form.get('nome').setValue(aluno[0].nome);
           this.form.get('matricula').setValue(aluno[0].matricula);
           this.form.get('telefone').setValue(aluno[0].telefone);
-          this.form.get('email').setValue(aluno[0].email)
-          for (let i = 0; i < this.listDisciplinas.length; i++) {
-            const element = this.listDisciplinas[i].nome_disciplina;
-            if(res.aluno[0].disciplinas.nome_disciplina)
-              console.log(aluno[0].disciplinas.nome_disciplina)
-          }
+          this.form.get('email').setValue(aluno[0].email);
         }
       })
     }

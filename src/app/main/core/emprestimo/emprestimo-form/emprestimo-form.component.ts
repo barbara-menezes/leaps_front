@@ -30,13 +30,13 @@ export class EmprestimoFormComponent implements OnInit {
 
   form = new FormGroup({
     status: new FormControl('emprestado', Validators.required),
-    data_devolucao: new FormControl( moment(new Date()).format()),
-    data: new FormControl( moment(new Date()).format(),[Validators.required]),
+    data_devolucao: new FormControl(moment(new Date()).format()),
+    data: new FormControl(moment(new Date()).format(), [Validators.required]),
     retorno_previsto: new FormControl(moment(new Date()).format(), [Validators.required])
   })
 
-  nomeTeste = new FormControl ();
-  nomeAluno = new FormControl ();
+  nomeTeste = new FormControl();
+  nomeAluno = new FormControl();
   alunos: any[];
   testes: any = [];
 
@@ -85,7 +85,7 @@ export class EmprestimoFormComponent implements OnInit {
               msg: `O(a) emprestimo foi cadastrado(a) com sucesso!`,
               delay: 3500
             });
-            
+
           }
         })
       } else {
@@ -98,7 +98,7 @@ export class EmprestimoFormComponent implements OnInit {
               msg: `O(a) Empréstimo foi atualizado(a) com sucesso!`,
               delay: 3500
             });
-            
+
           }
         })
       }
@@ -119,15 +119,16 @@ export class EmprestimoFormComponent implements OnInit {
       this.studentService.findByNome(aluno).toPromise().then(res => {
         if (res) {
           let aluno = res[0];
-          this.form.addControl('alunos', new FormControl ([aluno[0].id], Validators.required));
+          this.form.addControl('alunos', new FormControl([aluno[0].id], Validators.required));
           if (aluno[0].disciplinas) {
             aluno[0].disciplinas.forEach(disciplina => {
-              if (disciplina && disciplina.testes.length > 0 ) {
+              if (disciplina && disciplina.testes.length > 0) {
                 disciplina.testes.forEach(teste => {
                   this.testes.push(teste);
                 })
-              }              
+              }
             })
+            this.testes=this.getUnique(this.testes,'id');
           }
         }
       }).catch(error => {
@@ -136,9 +137,23 @@ export class EmprestimoFormComponent implements OnInit {
     }
   }
 
-  adicionaTeste(teste){
-    if(teste){
-      this.form.addControl('testes', new FormControl ([teste.id], Validators.required));
+  getUnique(arr, comp) {
+
+    // store the comparison  values in array
+    const unique = arr.map(e => e[comp])
+
+      // store the indexes of the unique objects
+      .map((e, i, final) => final.indexOf(e) === i && i)
+
+      // eliminate the false indexes & return unique objects
+      .filter((e) => arr[e]).map(e => arr[e]);
+
+    return unique;
+  }
+
+  adicionaTeste(teste) {
+    if (teste) {
+      this.form.addControl('testes', new FormControl([teste.id], Validators.required));
       this.form.get('status').setValue("emprestado");
       this.nomeTeste.setValue(teste.nome);
     }
