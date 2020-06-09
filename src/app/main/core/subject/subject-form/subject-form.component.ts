@@ -76,7 +76,7 @@ export class SubjectFormComponent implements OnInit {
           }
         })
       } else {
-        this.service.update(this.form.value, this.id).toPromise().then(res => {
+        this.service.update(this.form.value, this.id,this.testes).toPromise().then(res => {
           if (res) {
             this.router.navigateByUrl('/subject')
             this.ngxNotificationMsgService.open({

@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { SubjectService } from 'src/app/main/services/subject.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-student-form',
@@ -50,6 +51,11 @@ export class StudentFormComponent implements OnInit {
           this.form.get('matricula').setValue(aluno[0].matricula);
           this.form.get('telefone').setValue(aluno[0].telefone);
           this.form.get('email').setValue(aluno[0].email)
+          for (let i = 0; i < this.listDisciplinas.length; i++) {
+            const element = this.listDisciplinas[i].nome_disciplina;
+            if(res.aluno[0].disciplinas.nome_disciplina)
+              console.log(aluno[0].disciplinas.nome_disciplina)
+          }
         }
       })
     }
@@ -73,7 +79,7 @@ export class StudentFormComponent implements OnInit {
           }
         })
       } else {
-        this.service.update(this.form.value, this.id).toPromise().then(res => {
+        this.service.update(this.form.value, this.form.get('matricula').value,this.disciplinas).toPromise().then(res => {
           if (res) {
             this.router.navigateByUrl('/student')
             this.ngxNotificationMsgService.open({

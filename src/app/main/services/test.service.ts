@@ -30,7 +30,6 @@ export class TestService extends BaseRestService<TesteModel>{
   }
 
   update(teste, id): Observable<any> {
-    console.log(this.actionUrl + '/' + teste.id, { teste: teste })
     return this.http.put<any>(this.actionUrl + '/' + id, { teste: teste })
   }
 }

@@ -30,8 +30,9 @@ export class SubjectService extends BaseRestService<SubjectModel> {
     return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
   }
 
-  update(subject, id): Observable<any> {
-    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: subject })
+  update(subject, id,testes): Observable<any> {
+    subject.testes = testes;
+    return this.http.put<any>(this.actionUrl + '/' + id, subject )
   }
 
 }

@@ -31,8 +31,9 @@ export class StudentService extends BaseRestService<StudentModel> {
     return this.http.get<any>(this.actionUrl + '/pesquisa/' + id);
   }
 
-  update(student, id): Observable<any> {
-    return this.http.put<any>(this.actionUrl + '/' + id, { disciplina: student })
+  update(student, id,disciplinas): Observable<any> {
+    student.disciplinas = disciplinas;
+    return this.http.put<any>(this.actionUrl + '/' + id,  student )
   }
 
   findByNome(nome): Observable<any> {
