@@ -6,6 +6,7 @@
     "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
+    "build-prod-stats": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build leaps-front --prod --stats-json",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot --target=production"
