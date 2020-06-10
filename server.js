@@ -1,13 +1,15 @@
 const express = require("express");
-const app = express();
 const path = require('path');
+const app = express();
 
-app.use(express.static(_dirname + '/dist'));
+const PORT = process.env.PORT || 8080;
 
-app.listen(process.env.PORT || 8080);
+app.use(express.static(__dirname + '/dist/leaps-admin'));
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(_dirname + '/dist/index.html'));
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dist/leaps-admin/index.html'));
 })
 
-console.log('listen');
+app.listen(PORT, () => {
+    console.log('Servidor on!')
+});
