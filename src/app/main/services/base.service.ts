@@ -25,7 +25,7 @@ export abstract class BaseService {
 
 @Injectable()
 export class Configuration {
-  public server = "http://localhost:8080/";
+  public server = "http:///leaps-back.herokuapp.com/";
   public apiUrl = "";
   public serverWithApiUrl = this.server + this.apiUrl;
 }
