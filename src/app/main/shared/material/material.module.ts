@@ -22,8 +22,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -53,8 +51,6 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatChipsModule,
         MatSlideToggleModule,
         MatMenuModule,
-        MatTooltipModule,
-        MatToolbarModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
@@ -85,8 +81,6 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatChipsModule,
         MatSlideToggleModule,
         MatMenuModule,
-        MatTooltipModule,
-        MatToolbarModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
